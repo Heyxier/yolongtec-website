@@ -1,0 +1,116 @@
+---
+layout: default
+title: "{{ title }}"
+---
+
+<style>
+.article-detail {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+}
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.article-header {
+    margin-bottom: 48px;
+}
+.article-category {
+    display: inline-block;
+    background: var(--accent-500);
+    color: var(--charcoal);
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.article-title {
+    font-family: var(--font-helvetica);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+.article-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.article-cover {
+    width: 100%;
+    margin-bottom: 48px;
+    border-radius: 8px;
+}
+.article-content {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+.article-content h2 {
+    font-family: var(--font-helvetica);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 40px 0 20px;
+}
+.article-content p {
+    margin-bottom: 20px;
+}
+.article-content ul {
+    margin-bottom: 20px;
+    padding-left: 24px;
+}
+.article-content li {
+    margin-bottom: 8px;
+}
+</style>
+
+<section class="article-detail">
+    <div class="article-container">
+        <header class="article-header">
+            <span class="article-category">{{ page.category | upcase }}</span>
+            <h1 class="article-title">{{ page.title }}</h1>
+            <p class="article-meta">
+                {% if page.publishedAt %}
+                Published: {{ page.publishedAt | date: "%B %d, %Y" }}
+                {% endif %}
+                {% if page.tags %}
+                | Tags: {{ page.tags | join: ", " }}
+                {% endif %}
+            </p>
+        </header>
+        
+        {% if page.coverImage %}
+        <img src="{{ page.coverImage | relative_url }}" alt="{{ page.title }}" class="article-cover">
+        {% endif %}
+        
+        <div class="article-content">
+            {{ content }}
+        </div>
+        
+        <div style="margin-top:48px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1);">
+            <a href="{{ site.baseurl }}/index.html" class="btn btn-accent">← Back to Home</a>
+        </div>
+    </div>
+</section>
+
+<script>
+// 修正内容中图片路径：加上 site.baseurl 前缀
+(function() {
+    var base = '{{ site.baseurl }}';
+    if (base) {
+        var imgs = document.querySelectorAll('.article-content img');
+        for (var i = 0; i < imgs.length; i++) {
+            var src = imgs[i].getAttribute('src');
+            if (src && src.startsWith('/') && !src.startsWith(base) && !src.startsWith('http')) {
+                imgs[i].src = base + src;
+            }
+        }
+    }
+})();
+</script>

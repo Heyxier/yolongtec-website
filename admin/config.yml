@@ -1,0 +1,50 @@
+backend:
+  name: github
+  repo: Heyxier/yolongtec-website
+  branch: main
+  commit_messages:
+    create: 'Create {{slug}}'
+    update: 'Update {{slug}}'
+    delete: 'Delete {{slug}}'
+    uploadMedia: 'Upload {{path}}'
+    deleteMedia: 'Delete {{path}}'
+
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: products
+    label: 产品
+    folder: content/products
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 型号, name: model, widget: string}
+      - {label: 名称, name: name, widget: string}
+      - {label: 分类, name: category, widget: select, options: [drill, fastening, grinder-cutter, hammer, saw, sander-polisher, cleanning, lighting]}
+      - {label: 电压, name: voltage, widget: string, required: false}
+      - {label: 扭矩, name: torque, widget: string, required: false}
+      - {label: 电机类型, name: motorType, widget: select, options: [standard, brushless], required: false}
+      - {label: 转速, name: speed, widget: string, required: false}
+      - {label: 重量, name: weight, widget: string, required: false}
+      - {label: 产品图片, name: image, widget: image, required: false}
+      - {label: 认证, name: certifications, widget: string, required: false}
+      - {label: 产品特点, name: features, widget: list, required: false}
+      - {label: 包装清单, name: accessories, widget: list, required: false}
+      - {label: 产品描述, name: description, widget: textarea, required: false}
+      - {label: 上架状态, name: status, widget: boolean, default: true}
+
+  - name: articles
+    label: 文章
+    folder: content/articles
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 标题, name: title, widget: string}
+      - {label: 分类, name: category, widget: select, options: [news, product, about]}
+      - {label: 发布日期, name: publishedAt, widget: datetime}
+      - {label: 摘要, name: excerpt, widget: textarea, required: false}
+      - {label: 封面图, name: coverImage, widget: image, required: false}
+      - {label: 正文, name: body, widget: markdown}
+      - {label: 标签, name: tags, widget: list, required: false}
+      - {label: 发布状态, name: status, widget: boolean, default: true}

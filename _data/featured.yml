@@ -1,0 +1,10 @@
+featured:
+  - type: product
+    model: ZPT-CD-12502
+    tag: "NEW ARRIVAL"
+  - type: product
+    model: ZPT-CD-18602
+    tag: "BEST SELLER"
+  - type: product
+    model: ZPT-CD-18902
+    tag: "PROFESSIONAL"

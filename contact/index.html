@@ -1,0 +1,51 @@
+---
+layout: default
+title: Contact Us - Yolong Power Tools
+permalink: /contact/
+---
+
+<section class="section contact-section" id="contact" style="padding-top: 120px;">
+        <div class="section-bg"><img src="{{ site.data.contact.bgImage | default: '../images/dealer-network.jpg' }}" alt="Contact"><div class="section-overlay"></div></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">{{ site.data.contact.title | default: 'CONTACT US' }}</h2>
+                <p class="contact-desc">{{ site.data.contact.description | default: 'Get in touch with our sales team or find a dealer near you' }}</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                            <div><strong>{{ site.data.contact.info[0].label | default: 'HEADQUARTERS' }}</strong><span>{{ site.data.contact.info[0].value | default: '328 Xinghu Street, Suzhou Industrial Park, China' }}</span></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+                            <div><strong>{{ site.data.contact.info[1].label | default: 'PHONE' }}</strong><span>{{ site.data.contact.info[1].value | default: '+86 400-888-6688' }}</span></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                            <div><strong>{{ site.data.contact.info[2].label | default: 'EMAIL' }}</strong><span>{{ site.data.contact.info[2].value | default: 'sales@yolong.com' }}</span></div>
+                        </div>
+                    </div>
+                    {% if site.data.contact.lat and site.data.contact.lon %}
+                    {% capture bbox %}{{ site.data.contact.lon | minus: 0.005 }},{{ site.data.contact.lat | minus: 0.005 }},{{ site.data.contact.lon | plus: 0.005 }},{{ site.data.contact.lat | plus: 0.005 }}{% endcapture %}
+                    <div style="margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox={{ bbox | url_encode }}&amp;layer=mapnik&amp;marker={{ site.data.contact.lat }},{{ site.data.contact.lon }}&amp;lang=en" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group"><label for="name">NAME</label><input type="text" id="name" name="name" required></div>
+                        <div class="form-group"><label for="company">COMPANY</label><input type="text" id="company" name="company"></div>
+                        <div class="form-group"><label for="email">EMAIL</label><input type="email" id="email" name="email" required></div>
+                        <div class="form-group"><label for="phone">PHONE</label><input type="tel" id="phone" name="phone"></div>
+                        <div class="form-group"><label for="message">MESSAGE</label><textarea id="message" name="message" rows="4" required></textarea></div>
+                        <button type="submit" class="btn btn-accent btn-full">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+            <div class="section-cta"><a href="../index.html" class="btn btn-accent btn-large">BACK TO HOME</a></div>
+        </div>
+    </section>
+

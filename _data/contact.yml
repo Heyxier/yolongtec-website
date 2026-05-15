@@ -1,0 +1,12 @@
+title: CONTACT US
+description: Get in touch with our sales team or find a dealer near you
+bgImage: ../images/dealer-network.jpg
+info:
+  - label: HEADQUARTERS
+    value: '17 Chengtai road, Taiping street, Xiangcheng district, Suzhou, Jiangsu, China'
+  - label: PHONE
+    value: +86 0512-69577857-808
+  - label: EMAIL
+    value: sale1@yolongtec.com
+lat: 31.42
+lon: 120.69

@@ -1,0 +1,176 @@
+---
+layout: default
+title: "{{ model }}"
+---
+
+<style>
+.product-detail {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+}
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+.product-gallery {
+    position: sticky;
+    top: 100px;
+}
+.product-gallery img {
+    width: 100%;
+    border-radius: 8px;
+    background: var(--charcoal);
+}
+.product-info {
+    padding: 40px 0;
+}
+.product-badge {
+    display: inline-block;
+    background: var(--accent-500);
+    color: var(--charcoal);
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.product-title {
+    font-family: var(--font-helvetica);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.product-model {
+    font-size: 1rem;
+    color: var(--accent-500);
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.product-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+@media (max-width: 480px) {
+    .product-grid { grid-template-columns: 1fr; gap: 20px; }
+    .product-gallery { position: static; }
+    .product-gallery img { border-radius: 4px; }
+    .product-title { font-size: 1.4rem; }
+    .product-desc { font-size: 0.9rem; }
+    .product-info { padding: 0; }
+    .specs-table td { padding: 10px 0; font-size: 0.8rem; }
+    .features-list li { font-size: 0.85rem; padding: 8px 0 8px 20px; }
+}
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+}
+.specs-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.specs-table td {
+    padding: 14px 0;
+    font-size: 0.9rem;
+}
+.specs-table td:first-child {
+    color: var(--text-muted);
+    width: 40%;
+}
+.specs-table td:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
+}
+.features-list li {
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-500);
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .product-grid { grid-template-columns: 1fr; gap: 32px; }
+    .product-gallery { position: static; }
+    .product-title { font-size: 1.8rem; }
+}
+</style>
+
+<section class="product-detail">
+    <div class="product-container">
+        <div class="product-grid">
+            <div class="product-gallery">
+                <img src="{{ page.image | relative_url }}" alt="{{ page.name }}">
+            </div>
+            <div class="product-info">
+                <span class="product-badge">{{ page.category | upcase }}</span>
+                <h1 class="product-title">{{ page.name }}</h1>
+                <p class="product-model">Model: {{ page.model }}</p>
+                <p class="product-desc">{{ page.description }}</p>
+                
+                <table class="specs-table">
+                    {% if page.voltage %}
+                    <tr><td>Voltage</td><td>{{ page.voltage }}</td></tr>
+                    {% endif %}
+                    {% if page.torque %}
+                    <tr><td>Max Torque</td><td>{{ page.torque }}</td></tr>
+                    {% endif %}
+                    {% if page.motorType %}
+                    <tr><td>Motor Type</td><td>{{ page.motorType }}</td></tr>
+                    {% endif %}
+                    {% if page.speed %}
+                    <tr><td>No-load Speed</td><td>{{ page.speed }}</td></tr>
+                    {% endif %}
+                    {% if page.weight %}
+                    <tr><td>Weight</td><td>{{ page.weight }}</td></tr>
+                    {% endif %}
+                    {% if page.certifications %}
+                    <tr><td>Certifications</td><td>{{ page.certifications }}</td></tr>
+                    {% endif %}
+                </table>
+
+                {% if page.features and page.features.size > 0 %}
+                <h3 style="color:var(--text-primary);font-family:var(--font-helvetica);font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:16px;">Key Features</h3>
+                <ul class="features-list">
+                    {% for feature in page.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if page.accessories and page.accessories.size > 0 %}
+                <h3 style="color:var(--text-primary);font-family:var(--font-helvetica);font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:16px;">What's Included</h3>
+                <ul class="features-list">
+                    {% for accessory in page.accessories %}
+                    <li>{{ accessory }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent" style="margin-top:24px;">GET QUOTE</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+# Jekyll configuration for Yolongtec V7.3
+
+title: Yolong Power Tools
+description: Professional Power Tools Manufacturer
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+timezone: Asia/Shanghai
+
+# Collections
+collections:
+  products:
+    output: true
+    permalink: /products/:name/
+  articles:
+    output: true
+    permalink: /news/:name/
+
+defaults:
+  - scope:
+      path: "_products"
+    values:
+      layout: product
+  - scope:
+      path: "_articles"
+    values:
+      layout: article
+
+# Exclude from site build
+exclude:
+  - README.md
+  - README_V7.md
+  - DEPLOY.md
+  - TODO.md
+  - SPEC.md
+  - CHANGELOG.md
+  - content/
+
+# Keep static files
+keep_files:
+  - images
+  - news
+  - about
+  - contact
+  - technology
+  - logo-green.png
+  - logo-white.png
+  - styles.css
+  - script.js
+  - products-dropdown.css
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap

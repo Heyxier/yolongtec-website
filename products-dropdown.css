@@ -1,0 +1,182 @@
+/* ============================================
+   PRODUCTS DROPDOWN MENU STYLES
+   yolongtec V7
+   ============================================ */
+
+/* Dropdown Container */
+.nav-dropdown {
+    position: relative;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 220px;
+    background: rgba(10, 10, 10, 0.98);
+    border: 1px solid rgba(0, 104, 71, 0.3);
+    border-top: 2px solid var(--accent-500, #FF3F00);
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    z-index: 1000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Show dropdown on hover (desktop) */
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown arrow indicator on nav-link */
+.nav-dropdown > .nav-link::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown:hover > .nav-link::before {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+    display: block;
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+    color: var(--accent-500, #FF3F00);
+    background: rgba(0, 104, 71, 0.1);
+    border-left-color: var(--accent-500, #FF3F00);
+    padding-left: 24px;
+}
+
+.dropdown-menu li a.active {
+    color: var(--accent-500, #FF3F00);
+    background: rgba(0, 104, 71, 0.15);
+    border-left-color: var(--accent-500, #FF3F00);
+    padding-left: 24px;
+}
+
+/* Mobile dropdown handling */
+@media (max-width: 768px) {
+    /* PRODUCTS dropdown wrapper — display:block 让 ::before 箭头用全宽定位 */
+    .nav-dropdown > .nav-link {
+        display: block;
+        position: relative;
+    }
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        display: none;
+        background: rgba(0, 30, 20, 0.6);
+        border: none;
+        border-left: 3px solid var(--accent-500, #FF3F00);
+        box-shadow: none;
+        min-width: auto;
+        width: 100%;
+        padding: 6px 0 6px 12px;
+        margin: 8px 0 12px 4px;
+        border-radius: 3px 6px 6px 0;
+        transition: none;
+    }
+
+    .nav-dropdown.open .dropdown-menu {
+        display: block;
+        animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-dropdown.open > .nav-link::before {
+        transform: rotate(180deg);
+        margin-top: -6px;
+    }
+
+    .nav-dropdown > .nav-link::before {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin-top: -2px;
+        margin-left: 0;
+        transition: transform 0.2s ease, margin-top 0.2s ease;
+    }
+
+    .dropdown-menu li a {
+        display: block;
+        padding: 14px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .dropdown-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a.active {
+        padding-left: 22px;
+        color: var(--accent-500, #FF3F00);
+        background: rgba(255, 63, 0, 0.12);
+    }
+
+    .nav-dropdown.open > .nav-link {
+        color: var(--accent-500, #FF3F00) !important;
+    }
+
+    /* 防止移动端 hover/focus 干扰下拉菜单 */
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+    }
+}

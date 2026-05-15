@@ -1,0 +1,62 @@
+---
+layout: default
+title: Page Not Found - Yolong Power Tools
+permalink: /404.html
+---
+
+<style>
+.not-found {
+    padding: 140px 0 80px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.not-found-content {
+    max-width: 600px;
+    padding: 0 24px;
+}
+.not-found-code {
+    font-family: var(--font-helvetica);
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--accent-500);
+    line-height: 1;
+    margin-bottom: 16px;
+}
+.not-found h1 {
+    font-family: var(--font-helvetica);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+.not-found p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+.not-found .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+</style>
+
+<section class="not-found">
+    <div class="section-bg">
+        <img src="{{ site.baseurl }}/images/construction-site.jpg" alt="">
+        <div class="section-overlay"></div>
+    </div>
+    <div class="not-found-content">
+        <div class="not-found-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist, or it may have been moved. Let's get you back on track.</p>
+        <a href="{{ site.baseurl }}/" class="btn btn-accent">← BACK TO HOME</a>
+    </div>
+</section>

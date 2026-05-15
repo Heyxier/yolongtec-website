@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - Yolong Power Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/products-dropdown.css">
+</head>
+<body>
+    <!-- Search Bar -->
+    <div class="search-bar-container" id="searchBar">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search products..." autocomplete="off">
+        <button class="btn-close" id="closeSearch">CLOSE</button>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="{{ site.baseurl }}/index.html" class="logo">
+                <img src="{{ site.baseurl }}/logo-white.png" alt="Yolong">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="{{ site.baseurl }}/index.html" class="nav-link">HOME</a></li>
+                <li><a href="{{ site.baseurl }}/about/index.html" class="nav-link">ABOUT US</a></li>
+                <li class="nav-dropdown">
+                    <a href="{{ site.baseurl }}/products/" class="nav-link">PRODUCTS</a>
+                    <ul class="dropdown-menu">
+                        {% assign cat_list = "" | split: "" %}
+                        {% for cat_hash in site.data.categories %}
+                            {% assign cat_list = cat_list | push: cat_hash[1] %}
+                        {% endfor %}
+                        {% assign cat_list = cat_list | sort: "order" %}
+                        {% for cat in cat_list %}
+                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{{ site.baseurl }}/news/index.html" class="nav-link">NEWS</a></li>
+                <li><a href="{{ site.baseurl }}/technology/index.html" class="nav-link">TECHNOLOGY</a></li>
+                <li><a href="{{ site.baseurl }}/contact/index.html" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent">GET QUOTE</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    {{ content }}
+
+    <!-- Footer (unified include) -->
+    {% include footer.html %}
+
+    <script src="{{ site.baseurl }}/script.js"></script>
+</body>
+</html>

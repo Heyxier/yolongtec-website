@@ -28,9 +28,8 @@ permalink: /zh/contact/
                         </div>
                     </div>
                     {% if site.data.zh_contact.lat and site.data.zh_contact.lon %}
-                    {% capture bbox %}{{ site.data.zh_contact.lon | minus: 0.005 }},{{ site.data.zh_contact.lat | minus: 0.005 }},{{ site.data.zh_contact.lon | plus: 0.005 }},{{ site.data.zh_contact.lat | plus: 0.005 }}{% endcapture %}
                     <div style="margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox={{ bbox | url_encode }}&amp;layer=mapnik&amp;marker={{ site.data.zh_contact.lat }},{{ site.data.zh_contact.lon }}&amp;lang=zh" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://uri.amap.com/marker?position={{ site.data.zh_contact.lon }},{{ site.data.zh_contact.lat }}&amp;name=园龙科技" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     {% endif %}
                 </div>

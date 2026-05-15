@@ -1,30 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - Yolong Power Tools</title>
+    <title>{{ page.title }} - {% if page.path contains 'zh/' %}远隆电动工具{% else %}Yolong Power Tools{% endif %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {% if page.path contains 'zh/' %}
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    {% endif %}
     <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/products-dropdown.css">
+    <style>
+        /* Language switcher button */
+        .lang-switch {
+            font-family: var(--font-helvetica);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 4px 12px;
+            border: 1px solid var(--text-muted);
+            border-radius: 3px;
+            transition: all var(--transition-fast);
+            letter-spacing: 1px;
+            margin-right: 8px;
+        }
+        .lang-switch:hover {
+            border-color: var(--accent-500);
+            color: var(--accent-500);
+        }
+        {% if page.path contains 'zh/' %}
+        .nav-link, .dropdown-menu a { font-family: 'Noto Sans SC', sans-serif; }
+        {% endif %}
+    </style>
 </head>
 <body>
     <!-- Search Bar -->
     <div class="search-bar-container" id="searchBar">
-        <input type="text" class="search-input" id="searchInput" placeholder="Search products..." autocomplete="off">
-        <button class="btn-close" id="closeSearch">CLOSE</button>
+        <input type="text" class="search-input" id="searchInput" placeholder="{% if page.path contains 'zh/' %}搜索产品...{% else %}Search products...{% endif %}" autocomplete="off">
+        <button class="btn-close" id="closeSearch">{% if page.path contains 'zh/' %}关闭{% else %}CLOSE{% endif %}</button>
         <div class="search-results" id="searchResults"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="{{ site.baseurl }}/index.html" class="logo">
+            <a href="{% if page.path contains 'zh/' %}/zh/{% else %}{{ site.baseurl }}/index.html{% endif %}" class="logo">
                 <img src="{{ site.baseurl }}/logo-white.png" alt="Yolong">
             </a>
             <ul class="nav-menu" id="navMenu">
+                {% if page.path contains 'zh/' %}
+                <!-- 中文导航 -->
+                <li><a href="/zh/" class="nav-link">首页</a></li>
+                <li><a href="/zh/about/" class="nav-link">关于远隆</a></li>
+                <li class="nav-dropdown">
+                    <a href="/zh/products/" class="nav-link">产品中心</a>
+                    <ul class="dropdown-menu">
+                        {% assign cat_list_zh = "" | split: "" %}
+                        {% for cat_hash in site.data.zh_categories %}
+                            {% assign cat_list_zh = cat_list_zh | push: cat_hash[1] %}
+                        {% endfor %}
+                        {% assign cat_list_zh = cat_list_zh | sort: "order" %}
+                        {% for cat in cat_list_zh %}
+                        <li><a href="/zh/products/{{ cat.slug }}/">{{ cat.name_zh }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="/zh/news/" class="nav-link">新闻动态</a></li>
+                <li><a href="/zh/technology/" class="nav-link">技术洞察</a></li>
+                <li><a href="/zh/contact/" class="nav-link">联系方式</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="/" class="lang-switch" id="langSwitch">EN</a>
+                <a href="/zh/contact/" class="btn btn-accent">联系我们</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+                {% else %}
+                <!-- 英文导航 -->
                 <li><a href="{{ site.baseurl }}/index.html" class="nav-link">HOME</a></li>
                 <li><a href="{{ site.baseurl }}/about/index.html" class="nav-link">ABOUT US</a></li>
                 <li class="nav-dropdown">
@@ -52,10 +108,12 @@
                     </svg>
                 </button>
                 <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent">GET QUOTE</a>
+                <a href="/zh/" class="lang-switch" id="langSwitch">中文</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
+                {% endif %}
         </div>
     </nav>
 

@@ -1,8 +1,10 @@
 ---
 layout: default
-title: Yolong - Professional Power Tools
-permalink: /
+lang: zh
+title: Yolong - 专业电动工具制造商
+permalink: /zh/
 ---
+
 <style>
 
         /* Featured Products Section */
@@ -309,47 +311,47 @@ permalink: /
 <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <img src="images/cordless-drill-hero.jpg" alt="Professional Power Tools">
+            <img src="../images/cordless-drill-hero.jpg" alt="专业电动工具">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-accent"></span>
-                ESTABLISHED 2008 • GARDEN & POWER TOOLS
+                成立于2008年 · 园林与电动工具
             </div>
             <h1 class="hero-title">
-                POWER TOOLS<br>
-                <span class="highlight">SPECIALIST</span>
+                专业电动工具<br>
+                <span class="highlight">制造商</span>
             </h1>
             <p class="hero-subtitle">
-                Since 2008, Suzhou Yuanlong Technology has been engineering garden power tools and electric power tools, 
-                providing reliable OEM/ODM solutions to global markets with great quality and affordable prices.
+                自2008年起，苏州远隆科技一直致力于园林电动工具和电动工具的研发与制造，
+                以卓越品质和实惠价格，为全球市场提供可靠的OEM/ODM解决方案。
             </p>
             <div class="hero-cta">
-                <a href="products/index.html" class="btn btn-accent btn-large">
-                    EXPLORE PRODUCTS
+                <a href="/zh/products/index.html" class="btn btn-accent btn-large">
+                    探索产品
                 </a>
-                <a href="contact/index.html" class="btn btn-outline-light btn-large">
-                    CONTACT US
+                <a href="/zh/contact/index.html" class="btn btn-outline-light btn-large">
+                    联系我们
                 </a>
             </div>
             <div class="hero-features">
                 <div class="feature">
                     <div class="feature-icon">✓</div>
-                    <span>OEM/ODM SOLUTIONS</span>
+                    <span>OEM/ODM解决方案</span>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">✓</div>
-                    <span>GLOBAL SHIPPING</span>
+                    <span>全球配送</span>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">✓</div>
-                    <span>WIN-WIN COOPERATION</span>
+                    <span>合作共赢</span>
                 </div>
             </div>
         </div>
         <div class="hero-scroll">
-            <span>SCROLL TO EXPLORE</span>
+            <span>向下滚动探索</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -361,17 +363,17 @@ permalink: /
                 <div class="stat-item">
                     <span class="stat-number" data-target="13500">0</span>
                     <span class="stat-unit">M²</span>
-                    <span class="stat-label">MANUFACTURING</span>
+                    <span class="stat-label">生产基地</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="250">0</span>
                     <span class="stat-unit">+</span>
-                    <span class="stat-label">EMPLOYEES</span>
+                    <span class="stat-label">员工团队</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="4">0</span>
-                    <span class="stat-unit">CONTINENTS</span>
-                    <span class="stat-label">GLOBAL MARKETS</span>
+                    <span class="stat-unit">大洲</span>
+                    <span class="stat-label">全球市场</span>
                 </div>
             </div>
         </div>
@@ -379,15 +381,15 @@ permalink: /
 
     <!-- Featured Products Section -->
     <section class="featured-section">
-        <div class="section-bg"><img src="images/workshop-bg.jpg" alt="Workshop"><div class="section-overlay"></div></div>
+        <div class="section-bg"><img src="../images/workshop-bg.jpg" alt="车间"><div class="section-overlay"></div></div>
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">FEATURED <span>PRODUCTS</span></h2>
-                <p class="section-desc">Discover our latest professional power tools engineered for performance</p>
+                <h2 class="section-title">精选 <span>产品</span></h2>
+                <p class="section-desc">探索我们最新研发的专业电动工具</p>
             </div>
             
             <div class="featured-scroll">
-                {% assign featured_products = site.data.featured.featured | where: "type", "product" %}
+                {% assign featured_products = site.data.zh_featured.featured | where: "type", "product" %}
                 {% for item in featured_products %}
                     {% assign product = site.products | where: "model", item.model | first %}
                     {% if product %}
@@ -399,7 +401,7 @@ permalink: /
                         {% if item.tag %}<span class="featured-tag">{{ item.tag }}</span>{% endif %}
                         <h3>{{ product.name | upcase }}</h3>
                         <p>{{ product.model }}{% if product.voltage %} | {{ product.voltage }}{% endif %}{% if product.torque %} | {{ product.torque }}{% endif %}</p>
-                        <a href="{{ product.url | relative_url }}" class="featured-link">LEARN MORE</a>
+                        <a href="{{ product.url | relative_url }}" class="featured-link">了解更多</a>
                     </div>
                 </div>
                     {% endif %}
@@ -411,11 +413,11 @@ permalink: /
 
     <!-- Technology Section -->
     <section class="news-section">
-        <div class="section-bg"><img src="images/brushless-motor.jpg" alt="Technology"><div class="section-overlay"></div></div>
+        <div class="section-bg"><img src="../images/brushless-motor.jpg" alt="技术"><div class="section-overlay"></div></div>
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">TECHNOLOGY <span>INSIGHTS</span></h2>
-                <p class="section-desc">Pushing the boundaries of power tool technology</p>
+                <h2 class="section-title">技术 <span>洞察</span></h2>
+                <p class="section-desc">不断突破电动工具技术边界</p>
             </div>
             
             <div class="news-grid">
@@ -429,37 +431,37 @@ permalink: /
                     {% endif %}
                     <div class="news-card-body">
                         {% if article.publishedAt %}
-                        <span class="news-date">{{ article.publishedAt | date: "%B %d, %Y" }}</span>
+                        <span class="news-date">{{ article.publishedAt | date: "%Y年%m月%d日" }}</span>
                         {% endif %}
                         <h3>{{ article.title | upcase }}</h3>
                         {% if article.excerpt and article.excerpt != "" %}
                         <p>{{ article.excerpt }}</p>
                         {% endif %}
-                        <span class="news-link">READ MORE</span>
+                        <span class="news-link">阅读更多</span>
                     </div>
                 </a>
                 {% else %}
                 <div class="news-card" style="grid-column:1/-1;text-align:center;padding:60px 24px;">
                     <div style="font-size:3rem;margin-bottom:12px;">🔧</div>
-                    <h3 style="flex:none;">TECHNOLOGY INSIGHTS COMING SOON</h3>
-                    <p style="flex:none;">Discover the latest technology innovations and breakthroughs from Yolong.</p>
+                    <h3 style="flex:none;">技术洞察即将上线</h3>
+                    <p style="flex:none;">探索远隆最新的技术创新和突破性进展。</p>
                 </div>
                 {% endfor %}
             </div>
             
             <div class="section-cta">
-                <a href="{{ site.baseurl }}/technology/index.html" class="btn btn-accent btn-large">VIEW ALL TECHNOLOGY</a>
+                <a href="{{ site.baseurl }}/zh/technology/index.html" class="btn btn-accent btn-large">查看全部技术</a>
             </div>
         </div>
     </section>
 
     <!-- News Section -->
     <section class="news-section" id="news">
-        <div class="section-bg"><img src="images/construction-site.jpg" alt="News"><div class="section-overlay"></div></div>
+        <div class="section-bg"><img src="../images/construction-site.jpg" alt="新闻"><div class="section-overlay"></div></div>
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">NEWS & <span>UPDATES</span></h2>
-                <p class="section-desc">Stay informed about our latest developments and industry insights</p>
+                <h2 class="section-title">新闻 <span>动态</span></h2>
+                <p class="section-desc">了解远隆最新动态与行业洞察</p>
             </div>
             
             <div class="news-grid">
@@ -473,26 +475,26 @@ permalink: /
                     {% endif %}
                     <div class="news-card-body">
                         {% if article.publishedAt %}
-                        <span class="news-date">{{ article.publishedAt | date: "%B %d, %Y" }}</span>
+                        <span class="news-date">{{ article.publishedAt | date: "%Y年%m月%d日" }}</span>
                         {% endif %}
                         <h3>{{ article.title | upcase }}</h3>
                         {% if article.excerpt and article.excerpt != "" %}
                         <p>{{ article.excerpt }}</p>
                         {% endif %}
-                        <span class="news-link">READ MORE</span>
+                        <span class="news-link">阅读更多</span>
                     </div>
                 </a>
                 {% else %}
                 <div class="news-card" style="grid-column:1/-1;text-align:center;padding:60px 24px;">
                     <div style="font-size:3rem;margin-bottom:12px;">📰</div>
-                    <h3 style="flex:none;">NEWS COMING SOON</h3>
-                    <p style="flex:none;">Stay tuned for the latest updates and announcements.</p>
+                    <h3 style="flex:none;">新闻即将上线</h3>
+                    <p style="flex:none;">敬请期待远隆的最新资讯和公告。</p>
                 </div>
                 {% endfor %}
             </div>
             
             <div class="section-cta">
-                <a href="{{ site.baseurl }}/news/index.html" class="btn btn-accent btn-large">VIEW ALL NEWS</a>
+                <a href="{{ site.baseurl }}/zh/news/index.html" class="btn btn-accent btn-large">查看全部新闻</a>
             </div>
         </div>
     </section>
@@ -500,23 +502,20 @@ permalink: /
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>READY TO <span>PARTNER</span> WITH US?</h2>
-            <p>Contact our sales team to learn more about our products, distribution opportunities, and how Yolong can support your business.</p>
-            <a href="contact/index.html" class="btn btn-accent btn-large">CONTACT US</a>
+            <h2>准备好与远隆<span>合作</span>了吗？</h2>
+            <p>联系我们的销售团队，了解更多产品信息、经销机会以及远隆如何支持您的业务发展。</p>
+            <a href="/zh/contact/index.html" class="btn btn-accent btn-large">联系我们</a>
         </div>
     </section>
 
     <!-- Footer -->
-
-<script>
-(function() {
-    var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    if (lang.startsWith('zh')) {
-        var path = window.location.pathname;
-        // Don't redirect if already on /zh/
-        if (!path.startsWith('/zh/') && path !== '/zh') {
-            window.location.href = '/zh/' + path.replace(/^\/+/, '');
-        }
-    }
-})();
-</script>
+    
+    <!-- Chinese Language Detection -->
+    <script>
+        (function() {
+            var lang = navigator.language || navigator.userLanguage;
+            if (lang && lang.indexOf('zh') !== 0) {
+                window.location.href = '/';
+            }
+        })();
+    </script>

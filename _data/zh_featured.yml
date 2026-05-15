@@ -1,0 +1,11 @@
+# This file is shared across locales (same as featured.yml)
+featured:
+  - type: product
+    model: ZPT-CD-12502
+    tag: "新品上架"
+  - type: product
+    model: ZPT-CD-18602
+    tag: "热销爆款"
+  - type: product
+    model: ZPT-CD-18902
+    tag: "专业之选"

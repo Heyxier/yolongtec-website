@@ -1,0 +1,317 @@
+---
+layout: default
+title: 关于我们 - 远隆电动工具
+permalink: /zh/about/
+---
+<style>
+/* Hero Section - Fixed Visibility */
+        .about-hero {
+            background: var(--primary-800);
+            padding: 100px 0 60px;
+            min-height: auto;
+        }
+        
+        .about-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+        }
+        
+        .about-hero-text h2 {
+            font-family: var(--font-helvetica);
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-black);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--spacing-md);
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .about-hero-text h2 span {
+            color: var(--accent-500);
+        }
+        
+        .about-hero-text p {
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-light);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: block;
+            margin-top: var(--spacing-md);
+        }
+        
+        /* Values Section - Background Image */
+        .values-section {
+            background: linear-gradient(rgba(0, 82, 57, 0.92), rgba(0, 61, 43, 0.95)),
+                        url('../../images/brushless-motor.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-3xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .value-item {
+            text-align: left;
+            padding: 0;
+        }
+        
+        .value-number {
+            font-family: var(--font-helvetica);
+            font-size: 2rem;
+            font-weight: var(--font-weight-black);
+            color: var(--accent-500);
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+        
+        .value-item h3 {
+            font-family: var(--font-helvetica);
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .value-item p {
+            font-size: 0.9rem;
+            font-weight: var(--font-weight-light);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Global Section - Background Image */
+        .global-section {
+            background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(0, 82, 57, 0.95)),
+                        url('../../images/dealer-network.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .global-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-3xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .global-item {
+            text-align: left;
+            padding: 0;
+        }
+        
+        .global-number {
+            font-family: var(--font-helvetica);
+            font-size: 3rem;
+            font-weight: var(--font-weight-black);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+        
+        .global-item h3 {
+            font-family: var(--font-helvetica);
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .global-item p {
+            font-size: 0.9rem;
+            font-weight: var(--font-weight-light);
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section - Compact */
+        .cta-section {
+            background: var(--primary-800);
+            padding: 40px 0 0 !important;
+            margin-bottom: 0 !important;
+            min-height: auto !important;
+        }
+        
+        .cta-section .container {
+            padding-bottom: 20px;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-family: var(--font-helvetica);
+            font-size: 1.8rem;
+            font-weight: var(--font-weight-black);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .cta-title span {
+            color: var(--accent-500);
+        }
+        
+        .cta-desc {
+            font-size: 0.95rem;
+            font-weight: var(--font-weight-light);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .values-grid,
+            .global-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+            
+            .about-hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 60px 0 30px !important;
+            }
+            .about-hero-text h2 {
+                font-size: 1.5rem !important;
+            }
+            .about-hero-text p {
+                font-size: 14px;
+            }
+            .values-section,
+            .global-section,
+            .cta-section {
+                padding: 40px 0;
+            }
+            .value-item,
+            .global-item {
+                padding: 20px;
+            }
+            .cta-title {
+                font-size: 1.3rem;
+            }
+            .cta-desc {
+                font-size: 0.85rem;
+            }
+        }
+</style>
+
+{% assign about = site.data.zh_about %}
+
+<!-- About Hero Section - Fixed -->
+    <section class="about-hero">
+        <div class="section-bg"><img src="../../images/construction-site.jpg" alt="关于远隆"><div class="section-overlay"></div></div>
+        <div class="container">
+            <div class="about-hero-content">
+                <div class="about-hero-text">
+                    <h2>关于 <span>远隆</span></h2>
+                    <p>{{ about.hero.subtitle }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Profile Section -->
+    <section class="section" style="background: var(--charcoal);">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <img src="{{ about.profile.image | prepend: '../' }}" alt="远隆制造" style="border: 2px solid rgba(255, 255, 255, 0.1); width: 100%;">
+                </div>
+                <div>
+                    <h3 style="font-family: var(--font-helvetica); font-size: 2rem; font-weight: var(--font-weight-black); color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-lg);">公司 <span style="color: var(--accent-500);">简介</span></h3>
+                    {% for paragraph in about.profile.paragraphs %}
+                    <p style="font-size: 1.05rem; font-weight: var(--font-weight-light); color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--spacing-lg);">
+                        {{ paragraph }}
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section - Background Image -->
+    <section class="section values-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title" style="text-align: center;">核心 <span style="color: var(--accent-500);">价值观</span></h2>
+                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">推动我们不断前进的原则</p>
+            </div>
+            <div class="values-grid">
+                {% for value in about.values %}
+                <div class="value-item">
+                    <span class="value-number">{{ value.number }}</span>
+                    <h3>{{ value.title }}</h3>
+                    <p>{{ value.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Presence Section - Background Image -->
+    <section class="section global-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title" style="text-align: center;">全球 <span style="color: var(--accent-500);">布局</span></h2>
+                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">服务全球专业用户</p>
+            </div>
+            <div class="global-grid">
+                {% for item in about.global %}
+                <div class="global-item">
+                    <span class="global-number">{{ item.figure }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Compact -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">{{ about.cta.title }}</h2>
+                <p class="cta-desc">{{ about.cta.description }}</p>
+                <a href="/zh/contact/" class="btn btn-accent btn-large">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+<script>
+(function() {
+    if (!navigator.language || !navigator.language.toLowerCase().startsWith('zh')) {
+        window.location.href = '/';
+    }
+})();
+</script>

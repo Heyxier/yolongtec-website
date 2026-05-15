@@ -1,0 +1,336 @@
+---
+layout: default
+title: 解决方案 - 远隆电动工具
+permalink: /zh/solutions/
+---
+
+<style>
+/* Solutions Page Specific Styles */
+.solutions-hero {
+    background: var(--primary-800);
+    padding: 140px 0 80px;
+    min-height: auto;
+}
+
+.solutions-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.solutions-hero h1 {
+    font-family: var(--font-helvetica);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.solutions-hero h1 span {
+    color: var(--accent-500);
+}
+
+.solutions-hero p {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    display: block;
+    margin-top: var(--spacing-md);
+}
+
+/* OEM/ODM Section */
+.odm-section {
+    background: var(--charcoal);
+}
+
+.odm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.odm-info h3 {
+    font-family: var(--font-helvetica);
+    font-size: 2.2rem;
+    font-weight: var(--font-weight-black);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.odm-info h3 span {
+    color: var(--accent-500);
+}
+
+.odm-info p {
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.odm-features {
+    list-style: none;
+    margin-bottom: var(--spacing-xl);
+}
+
+.odm-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-regular);
+    color: var(--text-primary);
+}
+
+.odm-features li::before {
+    content: '●';
+    color: var(--accent-500);
+    font-size: 0.7rem;
+}
+
+.odm-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Product Categories Grid */
+.categories-section {
+    background: var(--primary-700);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.category-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    border-color: var(--accent-500);
+    transform: translateY(-4px);
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.category-card-info {
+    padding: var(--spacing-lg);
+}
+
+.category-card-info h3 {
+    font-family: var(--font-helvetica);
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-card-info p {
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Process Section */
+.process-section {
+    background: var(--charcoal);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.process-card {
+    text-align: center;
+    padding: var(--spacing-2xl);
+}
+
+.process-number {
+    font-family: var(--font-helvetica);
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-black);
+    color: var(--accent-500);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.process-card h3 {
+    font-family: var(--font-helvetica);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.process-card p {
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .odm-grid {
+        grid-template-columns: 1fr;
+    }
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+    .solutions-hero h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    .solutions-hero {
+        padding: 100px 0 40px;
+    }
+    .solutions-hero h1 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+
+{% assign categories = site.data.zh_categories %}
+
+<!-- Solutions Hero Section -->
+<section class="solutions-hero">
+    <div class="section-bg"><img src="../../images/construction-site.jpg" alt="解决方案"><div class="section-overlay"></div></div>
+    <div class="container">
+        <div class="solutions-hero-content">
+            <h1>行业 <span>解决方案</span></h1>
+            <p>远隆科技提供全方位的OEM/ODM解决方案，覆盖园林工具、电动工具等多个领域。凭借超过14年的行业经验、先进的生产设施和专业的工程团队，我们为全球客户提供高品质、高性价比的产品和服务。</p>
+        </div>
+    </div>
+</section>
+
+<!-- OEM/ODM Solutions Section -->
+<section class="section odm-section">
+    <div class="container">
+        <div class="odm-grid">
+            <div class="odm-info">
+                <h3>OEM/ODM <span>解决方案</span></h3>
+                <p>我们为全球品牌商和经销商提供全面的OEM/ODM服务，从产品设计、模具开发到批量生产，全程严格把控质量和交期。无论您需要定制化产品还是标准品贴牌，远隆都能为您提供灵活可靠的解决方案。</p>
+                <ul class="odm-features">
+                    <li>产品设计与工程支持 — 根据您的需求定制开发</li>
+                    <li>模具开发与制造 — 快速打样，缩短上市周期</li>
+                    <li>批量生产与质量控制 — ISO标准流程，全检出厂</li>
+                    <li>包装与物流服务 — 从苏州直达全球港口</li>
+                </ul>
+                <a href="/zh/contact/" class="btn btn-accent">获取报价</a>
+            </div>
+            <div class="odm-image">
+                <img src="../../images/building.jpg" alt="远隆制造工厂">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Categories Section -->
+<section class="section categories-section">
+    <div class="container">
+        <div class="section-header" style="text-align: center;">
+            <h2 class="section-title" style="text-align: center;">产品 <span style="color: var(--accent-500);">领域</span></h2>
+            <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">覆盖八大产品类别，满足多行业需求</p>
+        </div>
+        <div class="categories-grid">
+            {% for item in categories %}
+            {% assign cat = item[1] %}
+            <div class="category-card">
+                <img src="../../{{ cat.image }}" alt="{{ cat.name_zh }}">
+                <div class="category-card-info">
+                    <h3>{{ cat.name_zh }}</h3>
+                    <p>{{ cat.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Cooperation Process Section -->
+<section class="section process-section">
+    <div class="container">
+        <div class="section-header" style="text-align: center;">
+            <h2 class="section-title" style="text-align: center;">合作 <span style="color: var(--accent-500);">流程</span></h2>
+            <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">简单透明的合作流程，让您省心省力</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <span class="process-number">01</span>
+                <h3>需求沟通</h3>
+                <p>了解您的产品需求、技术规格、目标市场和预算要求，提供初步方案和报价。</p>
+            </div>
+            <div class="process-card">
+                <span class="process-number">02</span>
+                <h3>样品确认</h3>
+                <p>根据确认的方案进行打样，提供样品供您测试和评估，确保产品完全符合要求。</p>
+            </div>
+            <div class="process-card">
+                <span class="process-number">03</span>
+                <h3>批量生产</h3>
+                <p>样品确认后启动批量生产，全程质量监控，确保每批产品稳定可靠，按时交付。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section" style="background: var(--primary-800); padding: 60px 0;">
+    <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <h2 style="font-family: var(--font-helvetica); font-size: 1.8rem; font-weight: var(--font-weight-black); color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-md);">
+                开始与 <span style="color: var(--accent-500);">远隆合作</span>
+            </h2>
+            <p style="font-size: 0.95rem; font-weight: var(--font-weight-light); color: var(--text-secondary); line-height: 1.5; margin-bottom: var(--spacing-lg);">
+                立即联系我们的销售团队，了解远隆如何为您的业务提供定制化解决方案。
+            </p>
+            <a href="/zh/contact/" class="btn btn-accent btn-large">联系我们</a>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!navigator.language || !navigator.language.toLowerCase().startsWith('zh')) {
+        window.location.href = '/';
+    }
+})();
+</script>

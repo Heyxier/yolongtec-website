@@ -32,7 +32,13 @@
             color: var(--accent-500);
         }
         {% if page.path contains 'zh/' %}
-        .nav-link, .dropdown-menu a { font-family: 'Noto Sans SC', sans-serif; }
+        .nav-link, .dropdown-menu a {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.95rem;
+        }
+        .btn { font-size: 0.95rem; }
+        .btn-large { font-size: 1rem; }
+        .lang-switch { font-size: 0.9rem; padding: 6px 14px; }
         {% endif %}
     </style>
 </head>

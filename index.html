@@ -514,8 +514,14 @@ permalink: /
     if (lang.startsWith('zh')) {
         var path = window.location.pathname;
         // Don't redirect if already on /zh/
-        if (!path.startsWith('/zh/') && path !== '/zh') {
-            window.location.href = '/zh/' + path.replace(/^\/+/, '');
+        if (!path.match(/\/zh(\/|$)/)) {
+            // Get the base URL segment (first part of path)
+            var parts = path.split('/').filter(Boolean);
+            var base = parts.length > 0 ? '/' + parts[0] : '';
+            // Extract relative path after base
+            var rel = path.replace(base, '') || '/';
+            rel = rel.replace(/^\/*/, '');
+            window.location.href = base + '/zh/' + rel;
         }
     }
 })();

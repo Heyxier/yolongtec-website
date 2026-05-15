@@ -2,7 +2,7 @@
 
 title: Yolong Power Tools
 description: Professional Power Tools Manufacturer
-baseurl: ""
+baseurl: /yolongtec-website
 
 # Build settings
 markdown: kramdown

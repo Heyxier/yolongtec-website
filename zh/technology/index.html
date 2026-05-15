@@ -214,7 +214,10 @@ permalink: /zh/technology/
 <script>
 (function() {
     if (!navigator.language || !navigator.language.toLowerCase().startsWith('zh')) {
-        window.location.href = '/';
+                // Get the base URL segment from current path
+        var parts = window.location.pathname.split('/').filter(Boolean);
+        var base = parts.length > 0 ? '/' + parts[0] : '';
+        window.location.href = base + '/';
     }
 })();
 </script>

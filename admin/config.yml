@@ -14,14 +14,15 @@ public_folder: /images
 
 collections:
   - name: products
-    label: 产品
-    folder: content/products
+    label: 产品管理
+    folder: _products
     create: true
     slug: '{{slug}}'
     fields:
-      - {label: 型号, name: model, widget: string}
-      - {label: 名称, name: name, widget: string}
-      - {label: 分类, name: category, widget: select, options: [drill, fastening, grinder-cutter, hammer, saw, sander-polisher, cleanning, lighting]}
+      - {label: 型号 (Model), name: model, widget: string}
+      - {label: 名称 (Name) *, name: name, widget: string}
+      - {label: 中文名称 (Name_ZH), name: name_zh, widget: string, required: false}
+      - {label: 分类, name: category, widget: select, options: [drill, fastening, grinder-cutter, hammer, saw, sander-polisher, cleanning, lighting, scissors]}
       - {label: 电压, name: voltage, widget: string, required: false}
       - {label: 扭矩, name: torque, widget: string, required: false}
       - {label: 电机类型, name: motorType, widget: select, options: [standard, brushless], required: false}
@@ -29,14 +30,18 @@ collections:
       - {label: 重量, name: weight, widget: string, required: false}
       - {label: 产品图片, name: image, widget: image, required: false}
       - {label: 认证, name: certifications, widget: string, required: false}
-      - {label: 产品特点, name: features, widget: list, required: false}
-      - {label: 包装清单, name: accessories, widget: list, required: false}
-      - {label: 产品描述, name: description, widget: textarea, required: false}
+      - {label: 产品特点 (Features), name: features, widget: list, required: false}
+      - {label: 中文特点 (Features_ZH), name: features_zh, widget: list, required: false}
+      - {label: 包装清单 (Accessories), name: accessories, widget: list, required: false}
+      - {label: 中文清单 (Accessories_ZH), name: accessories_zh, widget: list, required: false}
+      - {label: 产品描述 (Description), name: description, widget: textarea, required: false}
+      - {label: 中文描述 (Desc_ZH), name: desc_zh, widget: textarea, required: false}
       - {label: 上架状态, name: status, widget: boolean, default: true}
+      - {label: '⚠️ 注意：添加/修改产品后需运行 scripts/generate-zh-products.sh 重新生成中文 stub', name: _note, widget: string, required: false}
 
   - name: articles
-    label: 文章
-    folder: content/articles
+    label: 文章管理
+    folder: _articles
     create: true
     slug: '{{slug}}'
     fields:

@@ -3,10 +3,10 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="{{ site.baseurl }}/index.html" class="logo">
+                <a href="{% if page.path contains 'zh/' %}{{ site.baseurl }}/zh/index.html{% else %}{{ site.baseurl }}/index.html{% endif %}" class="logo">
                     <img src="{{ site.baseurl }}/logo-white.png" alt="Yolong" class="logo-footer">
                 </a>
-                <p>Professional Power Tools Built to Last</p>
+                <p>{% if page.path contains 'zh/' %}专业电动工具，经久耐用{% else %}Professional Power Tools Built to Last{% endif %}</p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Facebook">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -25,7 +25,7 @@
 
             <div class="footer-links">
                 <div class="footer-column">
-                    <h4>PRODUCTS</h4>
+                    <h4>{% if page.path contains 'zh/' %}产品中心{% else %}PRODUCTS{% endif %}</h4>
                     <ul>
                         {% assign cat_list = "" | split: "" %}
                         {% for cat_hash in site.data.categories %}
@@ -33,39 +33,61 @@
                         {% endfor %}
                         {% assign cat_list = cat_list | sort: "order" %}
                         {% for cat in cat_list %}
-                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name }}</a></li>
+                        <li><a href="{% if page.path contains 'zh/' %}{{ site.baseurl }}/zh/products/{{ cat.slug }}/{% else %}{{ site.baseurl }}/products/{{ cat.slug }}/{% endif %}">{{ cat.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>SUPPORT</h4>
+                    <h4>{% if page.path contains 'zh/' %}技术支持{% else %}SUPPORT{% endif %}</h4>
                     <ul>
+                        {% if page.path contains 'zh/' %}
+                        <li><a href="#">产品手册</a></li>
+                        <li><a href="#">保修信息</a></li>
+                        <li><a href="#">服务中心</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="{{ site.baseurl }}/zh/contact/">联系我们</a></li>
+                        {% else %}
                         <li><a href="#">Product Manuals</a></li>
                         <li><a href="#">Warranty Info</a></li>
                         <li><a href="#">Service Centers</a></li>
                         <li><a href="#">FAQs</a></li>
                         <li><a href="{{ site.baseurl }}/contact/">Contact Us</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>COMPANY</h4>
+                    <h4>{% if page.path contains 'zh/' %}关于园龙{% else %}COMPANY{% endif %}</h4>
                     <ul>
+                        {% if page.path contains 'zh/' %}
+                        <li><a href="{{ site.baseurl }}/zh/about/">关于我们</a></li>
+                        <li><a href="{{ site.baseurl }}/zh/about/">加入我们</a></li>
+                        <li><a href="{{ site.baseurl }}/#news">新闻动态</a></li>
+                        <li><a href="{{ site.baseurl }}/zh/contact/">经销商</a></li>
+                        <li><a href="{{ site.baseurl }}/zh/contact/">联系方式</a></li>
+                        {% else %}
                         <li><a href="{{ site.baseurl }}/about/">About Yolong</a></li>
                         <li><a href="{{ site.baseurl }}/about/">Careers</a></li>
                         <li><a href="{{ site.baseurl }}/#news">News & Press</a></li>
                         <li><a href="{{ site.baseurl }}/contact/">Dealers</a></li>
                         <li><a href="{{ site.baseurl }}/contact/">Contact</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Yolong Power Tools. All rights reserved.</p>
+            <p>&copy; 2026 Yolong Tech. {% if page.path contains 'zh/' %}保留所有权利。{% else %}All rights reserved.{% endif %}</p>
             <div class="footer-legal">
+                {% if page.path contains 'zh/' %}
+                <a href="{{ site.baseurl }}/zh/about/">隐私政策</a>
+                <a href="{{ site.baseurl }}/zh/about/">服务条款</a>
+                <a href="{{ site.baseurl }}/zh/contact/">Cookie政策</a>
+                {% else %}
                 <a href="{{ site.baseurl }}/about/">Privacy Policy</a>
                 <a href="{{ site.baseurl }}/about/">Terms of Service</a>
                 <a href="{{ site.baseurl }}/contact/">Cookie Policy</a>
+                {% endif %}
             </div>
         </div>
     </div>

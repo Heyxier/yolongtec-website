@@ -1,0 +1,50 @@
+---
+layout: default
+title: 产品中心
+permalink: /zh/products/
+---
+
+<section class="section products-section" style="padding-top: 120px;">
+    <div class="section-bg">
+        <img src="{{ "images/workshop-bg.jpg" | relative_url }}" alt="车间">
+        <div class="section-overlay"></div>
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">
+                <span class="badge-accent"></span>
+                产品中心
+            </div>
+            <h2 class="section-title">我们的 <span>产品线</span></h2>
+            <p class="section-desc">9大品类、500多款型号的专业电动工具</p>
+        </div>
+
+        <div class="products-categories-grid">
+            {% assign cat_list = "" | split: "" %}
+            {% for cat_hash in site.data.zh_categories %}
+                {% assign cat_list = cat_list | push: cat_hash[1] %}
+            {% endfor %}
+            {% assign cat_list = cat_list | sort: "order" %}
+            {% for cat in cat_list %}
+            {% assign cat_products = site.products | where: "category", cat.slug | where: "status", true %}
+            <a href="{{ site.baseurl }}/zh/products/{{ cat.slug }}/" class="category-card">
+                <div class="category-image">
+                    <img src="{{ cat.image | relative_url }}" alt="{{ cat.name }}">
+                    <div class="category-overlay">
+                        <span class="category-count">{{ cat_products.size }} 款型号</span>
+                    </div>
+                </div>
+                <div class="category-info">
+                    <h3 class="category-name">{{ cat.name_zh | default: cat.name }}</h3>
+                    <p class="category-desc">{{ cat.desc }}</p>
+                    <span class="category-link">探索 →</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="section-cta">
+            <a href="{{ site.baseurl }}/zh/contact/index.html" class="btn btn-accent btn-large">索取产品目录</a>
+        </div>
+    </div>
+</section>

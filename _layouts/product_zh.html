@@ -1,0 +1,183 @@
+---
+layout: default
+title: "{{ page.title }}"
+---
+
+{% assign p = site.products | where: "model", page.model | first %}
+{% if p == nil %}
+  {% assign p = site.zh_products | where: "model", page.model | first %}
+{% endif %}
+
+<style>
+.product-detail {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+}
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+.product-gallery {
+    position: sticky;
+    top: 100px;
+}
+.product-gallery img {
+    width: 100%;
+    border-radius: 8px;
+    background: var(--charcoal);
+}
+.product-info {
+    padding: 40px 0;
+}
+.product-badge {
+    display: inline-block;
+    background: var(--accent-500);
+    color: var(--charcoal);
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.product-title {
+    font-family: var(--font-helvetica);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.product-model {
+    font-size: 1rem;
+    color: var(--accent-500);
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.product-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+@media (max-width: 480px) {
+    .product-grid { grid-template-columns: 1fr; gap: 20px; }
+    .product-gallery { position: static; }
+    .product-gallery img { border-radius: 4px; }
+    .product-title { font-size: 1.4rem; }
+    .product-desc { font-size: 0.9rem; }
+    .product-info { padding: 0; }
+    .specs-table td { padding: 10px 0; font-size: 0.8rem; }
+    .features-list li { font-size: 0.85rem; padding: 8px 0 8px 20px; }
+}
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+}
+.specs-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.specs-table td {
+    padding: 14px 0;
+    font-size: 0.9rem;
+}
+.specs-table td:first-child {
+    color: var(--text-muted);
+    width: 40%;
+}
+.specs-table td:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
+}
+.features-list li {
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-500);
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .product-grid { grid-template-columns: 1fr; gap: 32px; }
+    .product-gallery { position: static; }
+    .product-title { font-size: 1.8rem; }
+}
+</style>
+
+<section class="product-detail">
+    <div class="product-container">
+        <div class="product-grid">
+            <div class="product-gallery">
+                <img src="{{ p.image | relative_url }}" alt="{{ p.name_zh | default: p.name }}">
+            </div>
+            <div class="product-info">
+                <span class="product-badge">{{ p.category | upcase }}</span>
+                <h1 class="product-title">{{ p.name_zh | default: p.name }}</h1>
+                <p class="product-model">型号: {{ p.model }}</p>
+                <p class="product-desc">{{ p.desc_zh | default: p.description }}</p>
+                
+                <table class="specs-table">
+                    {% if p.voltage %}
+                    <tr><td>电压</td><td>{{ p.voltage }}</td></tr>
+                    {% endif %}
+                    {% if p.torque %}
+                    <tr><td>最大扭矩</td><td>{{ p.torque }}</td></tr>
+                    {% endif %}
+                    {% if p.motorType %}
+                    <tr><td>电机类型</td><td>{{ p.motorType }}</td></tr>
+                    {% endif %}
+                    {% if p.speed %}
+                    <tr><td>空载转速</td><td>{{ p.speed }}</td></tr>
+                    {% endif %}
+                    {% if p.weight %}
+                    <tr><td>重量</td><td>{{ p.weight }}</td></tr>
+                    {% endif %}
+                    {% if p.certifications %}
+                    <tr><td>认证</td><td>{{ p.certifications }}</td></tr>
+                    {% endif %}
+                </table>
+
+                {% assign features = p.features_zh | default: p.features %}
+                {% if features and features.size > 0 %}
+                <h3 style="color:var(--text-primary);font-family:var(--font-helvetica);font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:16px;">主要特性</h3>
+                <ul class="features-list">
+                    {% for feature in features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% assign accessories = p.accessories_zh | default: p.accessories %}
+                {% if accessories and accessories.size > 0 %}
+                <h3 style="color:var(--text-primary);font-family:var(--font-helvetica);font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:16px;">包装清单</h3>
+                <ul class="features-list">
+                    {% for item in accessories %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <a href="{{ site.baseurl }}/zh/contact/index.html" class="btn btn-accent" style="margin-top:24px;">获取报价</a>
+            </div>
+        </div>
+    </div>
+</section>

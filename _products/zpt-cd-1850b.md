@@ -22,6 +22,23 @@ accessories:
   - "1pc Belt Clip"
   - "1pc Injection Case"
 description: "Ultra-compact design for tight spaces — only 134mm length"
+name_zh: "18V 50Nm 无刷紧凑型电钻"
+desc_zh: "超紧凑设计，仅134mm长，适合狭小空间"
+features_zh:
+  - "无刷电机，效率更高、寿命更长"
+  - "紧凑尺寸——仅134mm长，适合狭小空间"
+  - "双速变速箱，操作更灵活"
+  - "50Nm变速箱带自动主轴锁"
+  - "10mm单套免钥夹头"
+  - "无级变速带正反转功能"
+  - "LED工作灯，照亮暗处作业"
+  - "橡胶包胶手柄，握持舒适"
+accessories_zh:
+  - "2块2.0Ah电池"
+  - "1个快充充电器"
+  - "1根USB Type-C数据线"
+  - "1个腰夹"
+  - "1个注塑工具箱"
 status: true
 ---
 

@@ -993,6 +993,7 @@ body {
     font-size: 3.5rem;
     font-weight: var(--font-weight-black);
     color: var(--accent-500);
+    display: inline;
     line-height: 1.1;
 }
 

@@ -695,6 +695,13 @@ body {
     margin-bottom: var(--spacing-xs);
     letter-spacing: 0.5px;
 }
+.search-result-item .result-type-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent-500);
+    letter-spacing: 1px;
+    margin-right: 6px;
+}
 
 .product-desc {
     font-size: 0.85rem;

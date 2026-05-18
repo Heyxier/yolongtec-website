@@ -1,5 +1,6 @@
 ---
 title: Yolongtec 荣获年度最佳电动工具品牌
+title_en: Yolongtec Wins Best Power Tool Brand of the Year
 category: news
 placement: news
 publishedAt: '2026-04-20'

@@ -351,8 +351,8 @@ function initSearch() {
                 return;
             }
             
-            // Search products
-            const results = searchProducts(query);
+            // Search all (products + news + technology)
+            const results = searchAll(query);
             displaySearchResults(results, searchResults);
         });
     }
@@ -361,21 +361,52 @@ function initSearch() {
 /**
  * 搜索功能（数据驱动 + 中英文）
  * 数据源：由 _layouts/default.html 注入的 window.__SEARCH_DATA__
- * 新增搜索内容：在 _data/search.yml 中添加即可
+ * 新增搜索内容：在 _articles/ 中添加文章，或在 _data/search.yml 中添加产品
  */
-function searchProducts(query) {
+function searchAll(query) {
     var data = window.__SEARCH_DATA__;
     if (!data) return [];
     var isZh = window.location.pathname.indexOf('/zh/') !== -1;
     var q = query.toLowerCase();
+    var results = [];
     
-    return data.products.filter(function(p) {
-        var searchName = isZh ? p.name_zh : p.name;
-        var searchCat = isZh ? p.category_zh : p.category;
-        return searchName.toLowerCase().indexOf(q) !== -1 ||
-               p.model.toLowerCase().indexOf(q) !== -1 ||
-               searchCat.toLowerCase().indexOf(q) !== -1;
-    });
+    // 搜索产品
+    if (data.products) {
+        for (var i = 0; i < data.products.length; i++) {
+            var p = data.products[i];
+            var searchName = isZh ? p.name_zh : p.name;
+            var searchCat = isZh ? p.category_zh : p.category;
+            if (searchName.toLowerCase().indexOf(q) !== -1 ||
+                p.model.toLowerCase().indexOf(q) !== -1 ||
+                searchCat.toLowerCase().indexOf(q) !== -1) {
+                results.push(p);
+            }
+        }
+    }
+    
+    // 搜索新闻
+    if (data.news) {
+        for (var i = 0; i < data.news.length; i++) {
+            var n = data.news[i];
+            var searchTitle = isZh ? n.title_zh : n.title;
+            if (searchTitle.toLowerCase().indexOf(q) !== -1) {
+                results.push(n);
+            }
+        }
+    }
+    
+    // 搜索技术文章
+    if (data.technology) {
+        for (var i = 0; i < data.technology.length; i++) {
+            var t = data.technology[i];
+            var searchTitle = isZh ? t.title_zh : t.title;
+            if (searchTitle.toLowerCase().indexOf(q) !== -1) {
+                results.push(t);
+            }
+        }
+    }
+    
+    return results;
 }
 
 /**
@@ -389,7 +420,7 @@ function displaySearchResults(results, container) {
     
     if (results.length === 0) {
         container.innerHTML = '<div class="search-no-results">' +
-            (isZh ? '未找到相关产品' : 'No products found') + '</div>';
+            (isZh ? '未找到相关结果' : 'No results found') + '</div>';
         container.classList.add('active');
         return;
     }
@@ -397,14 +428,38 @@ function displaySearchResults(results, container) {
     var html = '';
     for (var i = 0; i < results.length; i++) {
         var r = results[i];
-        var name = isZh ? r.name_zh : r.name;
-        var cat = isZh ? r.category_zh : r.category;
-        var path = isZh
-            ? baseUrl + '/zh/products/' + r.slug + '/'
-            : baseUrl + '/products/' + r.slug + '.html';
+        var name, cat, path, typeLabel;
+        
+        if (r.type === 'product') {
+            name = isZh ? r.name_zh : r.name;
+            cat = isZh ? r.category_zh : r.category;
+            path = isZh
+                ? baseUrl + '/zh/products/' + r.slug + '/'
+                : baseUrl + '/products/' + r.slug + '.html';
+            typeLabel = isZh ? '产品' : 'PRODUCT';
+        } else if (r.type === 'news') {
+            name = isZh ? r.title_zh : r.title;
+            cat = r.category || '';
+            path = isZh
+                ? baseUrl + '/zh/news/' + r.slug + '/'
+                : baseUrl + '/news/' + r.slug + '/';
+            typeLabel = isZh ? '新闻' : 'NEWS';
+        } else if (r.type === 'technology') {
+            name = isZh ? r.title_zh : r.title;
+            cat = r.category || '';
+            path = isZh
+                ? baseUrl + '/zh/technology/' + r.slug + '/'
+                : baseUrl + '/technology/' + r.slug + '/';
+            typeLabel = isZh ? '技术' : 'TECH';
+        } else {
+            continue;
+        }
+        
         html += '<a href="' + path + '" class="search-result-item">' +
-            '<div class="result-name">' + name + '</div>' +
-            '<div class="result-model">' + r.model + ' | ' + cat + '</div>' +
+            '<div class="result-name">' +
+            '<span class="result-type-label">[' + typeLabel + ']</span> ' + name +
+            '</div>' +
+            '<div class="result-model">' + (r.model || cat || '') + '</div>' +
             '</a>';
     }
     

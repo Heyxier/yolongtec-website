@@ -147,8 +147,37 @@
                 model: {{ p.model | jsonify }},
                 category: {{ p.category | jsonify }},
                 category_zh: {{ p.category_zh | jsonify }},
-                slug: {{ p.slug | jsonify }}
+                slug: {{ p.slug | jsonify }},
+                type: 'product'
             },
+            {% endfor %}
+        ],
+        news: [
+            {% for a in site.articles %}
+            {% if a.placement == 'news' or a.placement == nil %}
+            {
+                title: {{ a.title_en | default: a.title | jsonify }},
+                title_zh: {{ a.title | jsonify }},
+                slug: {{ a.slug | jsonify }},
+                category: {{ a.category | default: 'news' | jsonify }},
+                date: {{ a.publishedAt | jsonify }},
+                type: 'news'
+            },
+            {% endif %}
+            {% endfor %}
+        ],
+        technology: [
+            {% for a in site.articles %}
+            {% if a.placement == 'technology' %}
+            {
+                title: {{ a.title_en | default: a.title | jsonify }},
+                title_zh: {{ a.title | jsonify }},
+                slug: {{ a.slug | jsonify }},
+                category: {{ a.category | default: 'technology' | jsonify }},
+                date: {{ a.publishedAt | jsonify }},
+                type: 'technology'
+            },
+            {% endif %}
             {% endfor %}
         ]
     };

@@ -11,8 +11,9 @@ permalink: /zh/products/fastening/
     </div>
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">FASTENING</h2>
-            <p class="section-desc">Impact wrenches, ratchets, and screwdrivers</p>
+            {% assign cat_data = site.data.zh_categories['fastening'] %}
+            <h2 class="section-title">{{ cat_data.name_zh }}</h2>
+            <p class="section-desc">{{ cat_data.desc_zh }}</p>
         </div>
 
         <div class="products-grid">

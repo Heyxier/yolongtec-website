@@ -27,14 +27,25 @@
                 <div class="footer-column">
                     <h4>{% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}产品中心{% else %}PRODUCTS{% endif %}</h4>
                     <ul>
+                        {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}
+                        {% assign cat_list = "" | split: "" %}
+                        {% for cat_hash in site.data.zh_categories %}
+                            {% assign cat_list = cat_list | push: cat_hash[1] %}
+                        {% endfor %}
+                        {% assign cat_list = cat_list | sort: "order" %}
+                        {% for cat in cat_list %}
+                        <li><a href="{{ site.baseurl }}/zh/products/{{ cat.slug }}/">{{ cat.name_zh }}</a></li>
+                        {% endfor %}
+                        {% else %}
                         {% assign cat_list = "" | split: "" %}
                         {% for cat_hash in site.data.categories %}
                             {% assign cat_list = cat_list | push: cat_hash[1] %}
                         {% endfor %}
                         {% assign cat_list = cat_list | sort: "order" %}
                         {% for cat in cat_list %}
-                        <li><a href="{% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}{{ site.baseurl }}/zh/products/{{ cat.slug }}/{% else %}{{ site.baseurl }}/products/{{ cat.slug }}/{% endif %}">{{ cat.name }}</a></li>
+                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name }}</a></li>
                         {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="footer-column">

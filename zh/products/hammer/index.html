@@ -11,8 +11,9 @@ permalink: /zh/products/hammer/
     </div>
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">HAMMER</h2>
-            <p class="section-desc">Rotary hammers, demolition hammers, and chipping hammers</p>
+            {% assign cat_data = site.data.zh_categories['hammer'] %}
+            <h2 class="section-title">{{ cat_data.name_zh }}</h2>
+            <p class="section-desc">{{ cat_data.desc_zh }}</p>
         </div>
 
         <div class="products-grid">

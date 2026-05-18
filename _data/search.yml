@@ -1,0 +1,166 @@
+# 搜索索引 - 产品、新闻等可搜索内容
+# 新增产品/文章只需在这里添加，搜索会自动包含
+
+products:
+  - model: "ZPT-CD-12252"
+    name: "12V 25Nm Drill Driver"
+    name_zh: "12V 25Nm 电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-12252"
+
+  - model: "ZPT-CD-12402"
+    name: "12V 40Nm Drill Driver"
+    name_zh: "12V 40Nm 电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-12402"
+
+  - model: "ZPT-CD-12502"
+    name: "12V 50Nm Brushless Drill & Driver 2in1"
+    name_zh: "12V 50Nm 无刷电钻/起子二合一"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-12502"
+
+  - model: "ZPT-CD-12504"
+    name: "12V 50Nm Brushless Drill with Detachable Multi-Head"
+    name_zh: "12V 50Nm 无刷电钻(可拆卸多头)"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-12504"
+
+  - model: "ZPT-CD-18301"
+    name: "18V 30Nm Drill Driver"
+    name_zh: "18V 30Nm 电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-18301"
+
+  - model: "ZPT-CD-1850B"
+    name: "18V 50Nm Brushless Compact Drill"
+    name_zh: "18V 50Nm 无刷紧凑型电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-1850b"
+
+  - model: "ZPT-CD-18501"
+    name: "18V 50Nm Drill Driver"
+    name_zh: "18V 50Nm 电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-18501"
+
+  - model: "ZPT-CD-18602"
+    name: "18V 60Nm Brushless Drill"
+    name_zh: "18V 60Nm 无刷电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-18602"
+
+  - model: "ZPT-CD-18902"
+    name: "18V 90Nm Brushless Drill"
+    name_zh: "18V 90Nm 无刷电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-cd-18902"
+
+  - model: "ZPT-ID-12502"
+    name: "12V 50Nm Brushless Impact Drill"
+    name_zh: "12V 50Nm 无刷冲击电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-id-12502"
+
+  - model: "ZPT-ID-18152"
+    name: "18V 150Nm Brushless Impact Drill"
+    name_zh: "18V 150Nm 无刷冲击电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-id-18152"
+
+  - model: "ZPT-ID-18502"
+    name: "18V 50Nm Impact Drill"
+    name_zh: "18V 50Nm 冲击电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-id-18502"
+
+  - model: "ZPT-ID-18602"
+    name: "18V 60Nm Brushless Impact Drill"
+    name_zh: "18V 60Nm 无刷冲击电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-id-18602"
+
+  - model: "ZPT-ID-18902"
+    name: "18V 90Nm Brushless Impact Drill"
+    name_zh: "18V 90Nm 无刷冲击电钻"
+    category: "DRILL"
+    category_zh: "电钻"
+    slug: "drill/zpt-id-18902"
+
+  # Category pages
+  - model: "FASTENING"
+    name: "Fastening Products"
+    name_zh: "紧固工具"
+    category: "FASTENING"
+    category_zh: "紧固工具"
+    slug: "fastening/index"
+
+  - model: "GRINDER"
+    name: "Grinder & Cutter Products"
+    name_zh: "角磨机/切割机"
+    category: "GRINDER & CUTTER"
+    category_zh: "角磨机/切割机"
+    slug: "grinder-cutter/index"
+
+  - model: "HAMMER"
+    name: "Hammer Products"
+    name_zh: "电锤"
+    category: "HAMMER"
+    category_zh: "电锤"
+    slug: "hammer/index"
+
+  - model: "SAW"
+    name: "Saw Products"
+    name_zh: "锯"
+    category: "SAW"
+    category_zh: "锯"
+    slug: "saw/index"
+
+  - model: "SANDER"
+    name: "Sander & Polisher Products"
+    name_zh: "砂光机/抛光机"
+    category: "SANDER & POLISHER"
+    category_zh: "砂光机/抛光机"
+    slug: "sander-polisher/index"
+
+  - model: "CLEAN"
+    name: "Cleaning Products"
+    name_zh: "清洁设备"
+    category: "CLEANNING"
+    category_zh: "清洁设备"
+    slug: "cleanning/index"
+
+  - model: "LIGHT"
+    name: "Lighting Products"
+    name_zh: "照明设备"
+    category: "LIGHTING"
+    category_zh: "照明设备"
+    slug: "lighting/index"
+
+# 预留：后续新增新闻/文章可加到这里
+# news:
+#   - title: "..."        ← 英文标题
+#     title_zh: "..."     ← 中文标题
+#     date: "2026-05-18"
+#     slug: "article-slug"
+#     summary: "..."
+#     summary_zh: "..."
+
+# 预留：技术洞察文章
+# articles:
+#   - title: "..."
+#     title_zh: "..."
+#     slug: "..."

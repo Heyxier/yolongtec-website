@@ -137,6 +137,22 @@
 
     <script src="{{ site.baseurl }}/script.js"></script>
     <script>
+    // ===== 搜索数据（由 Jekyll 编译注入） =====
+    window.__SEARCH_DATA__ = {
+        products: [
+            {% for p in site.data.search.products %}
+            {
+                name: {{ p.name | jsonify }},
+                name_zh: {{ p.name_zh | jsonify }},
+                model: {{ p.model | jsonify }},
+                category: {{ p.category | jsonify }},
+                category_zh: {{ p.category_zh | jsonify }},
+                slug: {{ p.slug | jsonify }}
+            },
+            {% endfor %}
+        ]
+    };
+    
     /**
      * 语言偏好管理 + IP首次访问自动检测
      * 

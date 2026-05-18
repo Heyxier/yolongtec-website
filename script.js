@@ -359,60 +359,54 @@ function initSearch() {
 }
 
 /**
- * 产品搜索
+ * 搜索功能（数据驱动 + 中英文）
+ * 数据源：由 _layouts/default.html 注入的 window.__SEARCH_DATA__
+ * 新增搜索内容：在 _data/search.yml 中添加即可
  */
 function searchProducts(query) {
-    const products = [
-        // DRILL series
-        { name: '12V 25Nm Drill Driver', model: 'ZPT-CD-12252', path: 'products/drill/ZPT-CD-12252.html', category: 'DRILL' },
-        { name: '12V 40Nm Drill Driver', model: 'ZPT-CD-12402', path: 'products/drill/ZPT-CD-12402.html', category: 'DRILL' },
-        { name: '12V 50Nm Brushless Drill & Driver 2in1', model: 'ZPT-CD-12502', path: 'products/drill/ZPT-CD-12502.html', category: 'DRILL' },
-        { name: '12V 50Nm Brushless Impact Drill', model: 'ZPT-ID-12502', path: 'products/drill/ZPT-ID-12502.html', category: 'DRILL' },
-        { name: '12V 50Nm Brushless Drill with Multi-Head', model: 'ZPT-CD-12504', path: 'products/drill/ZPT-CD-12504.html', category: 'DRILL' },
-        { name: '18V 30Nm Drill Driver', model: 'ZPT-CD-18301', path: 'products/drill/ZPT-CD-18301.html', category: 'DRILL' },
-        { name: '18V 50Nm Brushless Compact Drill', model: 'ZPT-CD-1850B', path: 'products/drill/ZPT-CD-1850B.html', category: 'DRILL' },
-        { name: '18V 50Nm Drill Driver', model: 'ZPT-CD-18501', path: 'products/drill/ZPT-CD-18501.html', category: 'DRILL' },
-        { name: '18V 50Nm Impact Drill', model: 'ZPT-ID-18502', path: 'products/drill/ZPT-ID-18502.html', category: 'DRILL' },
-        { name: '18V 60Nm Brushless Drill', model: 'ZPT-CD-18602', path: 'products/drill/ZPT-CD-18602.html', category: 'DRILL' },
-        { name: '18V 60Nm Brushless Impact Drill', model: 'ZPT-ID-18602', path: 'products/drill/ZPT-ID-18602.html', category: 'DRILL' },
-        { name: '18V 90Nm Brushless Drill', model: 'ZPT-CD-18902', path: 'products/drill/ZPT-CD-18902.html', category: 'DRILL' },
-        { name: '18V 90Nm Brushless Impact Drill', model: 'ZPT-ID-18902', path: 'products/drill/ZPT-ID-18902.html', category: 'DRILL' },
-        { name: '18V 150Nm Brushless Impact Drill', model: 'ZPT-ID-18152', path: 'products/drill/ZPT-ID-18152.html', category: 'DRILL' },
-        // Other categories
-        { name: 'Fastening Products', model: 'FASTENING', path: 'products/fastening/index.html', category: 'FASTENING' },
-        { name: 'Grinder & Cutter Products', model: 'GRINDER', path: 'products/grinder-cutter/index.html', category: 'GRINDER & CUTTER' },
-        { name: 'Hammer Products', model: 'HAMMER', path: 'products/hammer/index.html', category: 'HAMMER' },
-        { name: 'Saw Products', model: 'SAW', path: 'products/saw/index.html', category: 'SAW' },
-        { name: 'Sander & Polisher Products', model: 'SANDER', path: 'products/sander-polisher/index.html', category: 'SANDER & POLISHER' },
-        { name: 'Cleanning Products', model: 'CLEAN', path: 'products/cleanning/index.html', category: 'CLEANNING' },
-        { name: 'Lighting Products', model: 'LIGHT', path: 'products/lighting/index.html', category: 'LIGHTING' },
-    ];
+    var data = window.__SEARCH_DATA__;
+    if (!data) return [];
+    var isZh = window.location.pathname.indexOf('/zh/') !== -1;
+    var q = query.toLowerCase();
     
-    return products.filter(p => 
-        p.name.toLowerCase().includes(query) || 
-        p.model.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
-    );
+    return data.products.filter(function(p) {
+        var searchName = isZh ? p.name_zh : p.name;
+        var searchCat = isZh ? p.category_zh : p.category;
+        return searchName.toLowerCase().indexOf(q) !== -1 ||
+               p.model.toLowerCase().indexOf(q) !== -1 ||
+               searchCat.toLowerCase().indexOf(q) !== -1;
+    });
 }
 
 /**
- * 显示搜索结果
+ * 显示搜索结果（中英文版）
  */
 function displaySearchResults(results, container) {
     if (!container) return;
+    var isZh = window.location.pathname.indexOf('/zh/') !== -1;
+    var base = window.location.pathname.match(/^\/[^\/]+/);
+    var baseUrl = base ? base[0] : '';
     
     if (results.length === 0) {
-        container.innerHTML = '<div class="search-no-results">No products found</div>';
+        container.innerHTML = '<div class="search-no-results">' +
+            (isZh ? '未找到相关产品' : 'No products found') + '</div>';
         container.classList.add('active');
         return;
     }
     
-    const html = results.map(r => `
-        <a href="${r.path}" class="search-result-item">
-            <div class="result-name">${r.name}</div>
-            <div class="result-model">${r.model} | ${r.category}</div>
-        </a>
-    `).join('');
+    var html = '';
+    for (var i = 0; i < results.length; i++) {
+        var r = results[i];
+        var name = isZh ? r.name_zh : r.name;
+        var cat = isZh ? r.category_zh : r.category;
+        var path = isZh
+            ? baseUrl + '/zh/products/' + r.slug + '/'
+            : baseUrl + '/products/' + r.slug + '.html';
+        html += '<a href="' + path + '" class="search-result-item">' +
+            '<div class="result-name">' + name + '</div>' +
+            '<div class="result-model">' + r.model + ' | ' + cat + '</div>' +
+            '</a>';
+    }
     
     container.innerHTML = html;
     container.classList.add('active');

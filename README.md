@@ -1,6 +1,6 @@
-# Yolongtec V7.2 企业官网
+# Yolongtec V8.0 企业官网
 
-**版本**: V7.3  
+**版本**: V8.0  
 **技术栈**: Jekyll 4.3 + GitHub Pages + GitHub Actions + Markdown Collection  
 **部署地址**: https://heyxier.github.io/yolongtec-website-demo/
 
@@ -15,7 +15,7 @@
 ## 📁 目录结构
 
 ```
-yolongtec-v7.3/
+yolongtec-v8.0/
 ├── _config.yml              # Jekyll 配置
 ├── _data/
 │   └── categories.yml       # ✅ 产品分类配置（增删分类改此文件）
@@ -150,5 +150,5 @@ A: 将图片文件上传到 `images/` 目录，然后在 `.md` 文件的 `image`
 
 ---
 
-**最后更新**: 2026-05-02  
+**最后更新**: 2026-05-18  
 **维护方式**: 通过 GitHub 直接编辑 Markdown 文件

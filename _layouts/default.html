@@ -45,7 +45,7 @@
 <body>
     <!-- Search Bar -->
     <div class="search-bar-container" id="searchBar">
-        <input type="text" class="search-input" id="searchInput" placeholder="{% if page.path contains 'zh/' %}搜索产品...{% else %}Search products...{% endif %}" autocomplete="off">
+        <input type="text" class="search-input" id="searchInput" placeholder="{% if page.path contains 'zh/' %}搜索产品、新闻、技术文章...{% else %}Search products, news & articles...{% endif %}" autocomplete="off">
         <button class="btn-close" id="closeSearch">{% if page.path contains 'zh/' %}关闭{% else %}CLOSE{% endif %}</button>
         <div class="search-results" id="searchResults"></div>
     </div>

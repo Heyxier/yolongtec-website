@@ -11,7 +11,7 @@ tags:
   - 行业荣誉
 status: true
 ---
-<h1>Yolongtec 荣获年度最佳电动工具品牌
+<h1><span style="color: var(--text-primary); font-family: var(--font);">Yolongtec 荣获年度最佳电动工具品牌</span>
 
 </h1>
 

@@ -2,7 +2,7 @@
 title: Yolongtec Wins the "Best Power Tool Brand of the Year" Award
 category: news
 placement: news
-lang: en
+lang: zh
 publishedAt: '2026-05-18'
 excerpt: >-
   At the 2026 Power Tool Industry Summit, Yolongtec was honored with the title

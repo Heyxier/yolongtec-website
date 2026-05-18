@@ -130,5 +130,62 @@
     {% include footer.html %}
 
     <script src="{{ site.baseurl }}/script.js"></script>
+    <script>
+    /**
+     * 语言自动检测（仅首次访问）
+     * 用户手动切换后记住选择，不再自动跳转
+     */
+    (function() {
+        // 是否在中文页面
+        var isZh = window.location.pathname.indexOf('/zh/') !== -1;
+        // 已保存的语言偏好
+        var savedLang = localStorage.getItem('yolong_lang');
+        
+        // 如果不是中文页面，也没有保存过偏好，才做检测
+        if (!isZh && !savedLang) {
+            var userLang = navigator.language || navigator.userLanguage;
+            var isZhUser = userLang && userLang.indexOf('zh') === 0;
+            
+            if (isZhUser) {
+                // 中国大陆 IP 检测（通过 Cloudflare 的 cf-ray/country 或免费 API）
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://ipapi.co/json/', true);
+                xhr.timeout = 3000;
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        try {
+                            var data = JSON.parse(xhr.responseText);
+                            if (data.country === 'CN') {
+                                localStorage.setItem('yolong_lang', 'zh-auto');
+                                window.location.href = '/zh/';
+                            }
+                        } catch(e) {}
+                    }
+                };
+                xhr.onerror = function() {
+                    // IP 检测失败时 fallback：根据浏览器语言
+                    if (isZhUser) {
+                        localStorage.setItem('yolong_lang', 'zh-auto');
+                        window.location.href = '/zh/';
+                    }
+                };
+                xhr.send();
+            }
+        }
+        
+        // 语言切换按钮点击时保存偏好
+        document.addEventListener('click', function(e) {
+            var target = e.target.closest && e.target.closest('.lang-switch');
+            if (target) {
+                var href = target.getAttribute('href');
+                if (href && href.indexOf('/zh/') !== -1) {
+                    localStorage.setItem('yolong_lang', 'zh');
+                } else {
+                    localStorage.setItem('yolong_lang', 'en');
+                }
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

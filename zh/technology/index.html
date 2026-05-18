@@ -176,7 +176,7 @@ permalink: /zh/technology/
         </div>
 
         <div class="tech-card-grid">
-            {% assign tech_articles = site.articles | where_exp: "a", "a.placement == 'technology' and a.lang == 'zh'" | sort: "publishedAt" | reverse %}
+            {% assign tech_articles = site.zh_articles | where: "placement", "technology" | sort: "publishedAt" | reverse %}
             {% if tech_articles.size > 0 %}
             {% for article in tech_articles %}
             <a href="{{ article.url | relative_url }}" class="tech-block">

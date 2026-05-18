@@ -20,6 +20,9 @@ collections:
   articles:
     output: true
     permalink: /news/:name/
+  zh_articles:
+    output: true
+    permalink: /zh/news/:name/
 
 defaults:
   - scope:
@@ -30,6 +33,10 @@ defaults:
       path: "_articles"
     values:
       layout: article
+  - scope:
+      path: "_zh_articles"
+    values:
+      layout: article_zh
 
 # Exclude from site build
 exclude:

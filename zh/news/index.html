@@ -176,7 +176,7 @@ permalink: /zh/news/
         </div>
 
         <div class="news-card-grid">
-            {% assign sorted_articles = site.articles | where_exp: "a", "a.lang == 'zh'" | sort: "publishedAt" | reverse %}
+            {% assign sorted_articles = site.zh_articles | sort: "publishedAt" | reverse %}
             {% for article in sorted_articles %}
             {% unless article.placement == "technology" %}
             <a href="{{ article.url | relative_url }}" class="news-block">

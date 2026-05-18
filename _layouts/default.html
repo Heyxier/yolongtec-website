@@ -53,7 +53,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="{% if page.path contains 'zh/' %}/zh/{% else %}{{ site.baseurl }}/index.html{% endif %}" class="logo">
+            <a href="{% if page.path contains 'zh/' %}{{ site.baseurl }}/zh/{% else %}{{ site.baseurl }}/index.html{% endif %}" class="logo">
                 <img src="{{ site.baseurl }}/logo-white.png" alt="Yolong">
             </a>
             <ul class="nav-menu" id="navMenu">
@@ -79,7 +79,7 @@
                 <li><a href="{{ site.baseurl }}/zh/contact/" class="nav-link">联系方式</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="{{ site.baseurl }}/" class="lang-switch" id="langSwitch">EN</a>
+                <a href="{{ site.baseurl }}/?lang=en" class="lang-switch" id="langSwitch">EN</a>
                 <a href="{{ site.baseurl }}/zh/contact/" class="btn btn-accent">联系我们</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
                     <span></span><span></span><span></span>
@@ -114,7 +114,7 @@
                     </svg>
                 </button>
                 <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent">GET QUOTE</a>
-                <a href="{{ site.baseurl }}/zh/" class="lang-switch" id="langSwitch">中文</a>
+                <a href="{{ site.baseurl }}/zh/?lang=zh" class="lang-switch" id="langSwitch">中文</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -132,66 +132,77 @@
     <script src="{{ site.baseurl }}/script.js"></script>
     <script>
     /**
-     * 语言自动检测（仅首次访问）
-     * 用户手动切换后记住选择，不再自动跳转
+     * 语言偏好管理 + IP首次访问自动检测
+     * 
+     * 优先级：URL参数 > localStorage > IP检测
+     * - URL参数: 语言切换按钮附带 ?lang=en 或 ?lang=zh，页面加载时处理，完全避免竞态
+     * - localStorage: 保存用户手动选择的偏好，有偏好时不检测
+     * - IP检测: 仅对全新用户（无任何偏好）执行一次
      */
     (function() {
-        // 当前页面的 base URL（适配 GitHub Pages 子路径和自定义域名）
         var base = window.location.pathname.match(/^\/[^\/]+/);
         var baseUrl = base ? base[0] : '';
         var zhPath = baseUrl + '/zh/';
-        // 是否在中文页面
-        var isZh = window.location.pathname.indexOf('/zh/') !== -1;
-        // 已保存的语言偏好
+        var enPath = baseUrl + '/';
+        var currentPath = window.location.pathname;
+        var isZh = currentPath.indexOf('/zh/') !== -1;
+        
+        // ===== 第一步：处理 URL 参数（最高优先级） =====
+        var urlParams = new URLSearchParams(window.location.search);
+        var langParam = urlParams.get('lang');
+        
+        if (langParam === 'en') {
+            localStorage.setItem('yolong_lang', 'en');
+            // 重定向到干净 URL（去掉 ?lang= 参数）
+            window.location.replace(enPath);
+            return; // 停止执行，等待重定向
+        }
+        if (langParam === 'zh') {
+            localStorage.setItem('yolong_lang', 'zh');
+            // 重定向到干净 URL
+            window.location.replace(zhPath);
+            return;
+        }
+        
+        // ===== 第二步：检查已保存的偏好 =====
         var savedLang = localStorage.getItem('yolong_lang');
         
-        // 如果不是中文页面，也没有保存过偏好，才做检测
-        if (!isZh && !savedLang) {
+        // 如果用户有明确偏好（zh 或 en），尊重它，不检测
+        if (savedLang === 'zh' || savedLang === 'en') {
+            return; // 用户已选择，什么都不做
+        }
+        
+        // ===== 第三步：仅对全新用户做 IP 检测（savedLang 为 null 或 'zh-auto'） =====
+        if (!isZh) {
             var userLang = navigator.language || navigator.userLanguage;
             var isZhUser = userLang && userLang.indexOf('zh') === 0;
             
             if (isZhUser) {
-                // 中国大陆 IP 检测
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'https://ipapi.co/json/', true);
-                xhr.timeout = 3000;
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        try {
-                            var data = JSON.parse(xhr.responseText);
-                            if (data.country === 'CN') {
-                                localStorage.setItem('yolong_lang', 'zh-auto');
-                                window.location.href = zhPath;
-                            }
-                        } catch(e) {}
-                    }
-                };
-                xhr.onerror = function() {
-                    // IP 检测失败时 fallback：根据浏览器语言
-                    if (isZhUser) {
-                        localStorage.setItem('yolong_lang', 'zh-auto');
-                        window.location.href = zhPath;
-                    }
-                };
-                xhr.send();
+                try {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'https://ipapi.co/json/', true);
+                    xhr.timeout = 3000;
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            try {
+                                var data = JSON.parse(xhr.responseText);
+                                if (data.country === 'CN') {
+                                    localStorage.setItem('yolong_lang', 'zh-auto');
+                                    window.location.href = zhPath;
+                                }
+                            } catch(e) {}
+                        }
+                    };
+                    xhr.onerror = function() {
+                        if (isZhUser) {
+                            localStorage.setItem('yolong_lang', 'zh-auto');
+                            window.location.href = zhPath;
+                        }
+                    };
+                    xhr.send();
+                } catch(e) {}
             }
         }
-        
-        // 语言切换按钮点击时保存偏好 + 手动导航（防止竞态条件）
-        document.addEventListener('click', function(e) {
-            var target = e.target.closest && e.target.closest('.lang-switch');
-            if (target) {
-                e.preventDefault(); // 先阻止默认导航
-                var href = target.getAttribute('href');
-                if (href && href.indexOf('/zh/') !== -1) {
-                    localStorage.setItem('yolong_lang', 'zh');
-                } else {
-                    localStorage.setItem('yolong_lang', 'en');
-                }
-                // 保存完成后再手动导航
-                window.location.href = href;
-            }
-        });
     })();
     </script>
 </body>

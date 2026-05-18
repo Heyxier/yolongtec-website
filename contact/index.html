@@ -28,10 +28,20 @@ permalink: /contact/
                         </div>
                     </div>
                     {% if site.data.contact.lat and site.data.contact.lon %}
-                    {% capture bbox %}{{ site.data.contact.lon | minus: 0.005 }},{{ site.data.contact.lat | minus: 0.005 }},{{ site.data.contact.lon | plus: 0.005 }},{{ site.data.contact.lat | plus: 0.005 }}{% endcapture %}
-                    <div style="margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox={{ bbox | url_encode }}&amp;layer=mapnik&amp;marker={{ site.data.contact.lat }},{{ site.data.contact.lon }}&amp;lang=en" width="100%" height="300" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
+                    <div id="contact-map" style="margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);height:300px;"></div>
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var lat = {{ site.data.contact.lat }};
+                        var lon = {{ site.data.contact.lon }};
+                        if (typeof L !== 'undefined') {
+                            var map = L.map('contact-map', { attributionControl: false, zoomControl: true }).setView([lat, lon], 15);
+                            L.tileLayer('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+                                maxZoom: 18
+                            }).addTo(map);
+                            L.marker([lat, lon]).addTo(map);
+                        }
+                    });
+                    </script>
                     {% endif %}
                 </div>
                 <div class="contact-form-wrapper">

@@ -427,7 +427,7 @@ permalink: /zh/
             </div>
             
             <div class="news-grid">
-                {% assign tech_articles = site.articles | where: "placement", "technology" | sort: "publishedAt" | reverse %}
+                {% assign tech_articles = site.articles | where: "placement", "technology" | where_exp: "a", "a.lang == 'zh'" | sort: "publishedAt" | reverse %}
                 {% for article in tech_articles limit:3 %}
                 <a href="{{ article.url | relative_url }}" class="news-card">
                     {% if article.coverImage and article.coverImage != "" %}
@@ -471,7 +471,7 @@ permalink: /zh/
             </div>
             
             <div class="news-grid">
-                {% assign sorted_articles = site.articles | sort: "publishedAt" | reverse %}
+                {% assign sorted_articles = site.articles | where_exp: "a", "a.lang == 'zh'" | sort: "publishedAt" | reverse %}
                 {% for article in sorted_articles limit:3 %}
                 <a href="{{ article.url | relative_url }}" class="news-card">
                     {% if article.coverImage and article.coverImage != "" %}

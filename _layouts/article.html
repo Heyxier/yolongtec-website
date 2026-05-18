@@ -76,11 +76,20 @@ title: "{{ title }}"
             <span class="article-category">{{ page.category | upcase }}</span>
             <h1 class="article-title">{{ page.title }}</h1>
             <p class="article-meta">
-                {% if page.publishedAt %}
-                Published: {{ page.publishedAt | date: "%B %d, %Y" }}
-                {% endif %}
-                {% if page.tags %}
-                | Tags: {{ page.tags | join: ", " }}
+                {% if page.lang == 'zh' %}
+                    {% if page.publishedAt %}
+                    发布时间：{{ page.publishedAt | date: "%Y年%m月%d日" }}
+                    {% endif %}
+                    {% if page.tags %}
+                    | 标签：{{ page.tags | join: "、" }}
+                    {% endif %}
+                {% else %}
+                    {% if page.publishedAt %}
+                    Published: {{ page.publishedAt | date: "%B %d, %Y" }}
+                    {% endif %}
+                    {% if page.tags %}
+                    | Tags: {{ page.tags | join: ", " }}
+                    {% endif %}
                 {% endif %}
             </p>
         </header>
@@ -94,7 +103,11 @@ title: "{{ title }}"
         </div>
         
         <div style="margin-top:48px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1);">
+            {% if page.lang == 'zh' %}
+            <a href="{{ site.baseurl }}/zh/index.html" class="btn btn-accent">← 返回首页</a>
+            {% else %}
             <a href="{{ site.baseurl }}/index.html" class="btn btn-accent">← Back to Home</a>
+            {% endif %}
         </div>
     </div>
 </section>

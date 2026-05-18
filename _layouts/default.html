@@ -114,7 +114,7 @@
                     </svg>
                 </button>
                 <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent">GET QUOTE</a>
-                <a href="/zh/" class="lang-switch" id="langSwitch">中文</a>
+                <a href="{{ site.baseurl }}/zh/" class="lang-switch" id="langSwitch">中文</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -177,16 +177,19 @@
             }
         }
         
-        // 语言切换按钮点击时保存偏好
+        // 语言切换按钮点击时保存偏好 + 手动导航（防止竞态条件）
         document.addEventListener('click', function(e) {
             var target = e.target.closest && e.target.closest('.lang-switch');
             if (target) {
+                e.preventDefault(); // 先阻止默认导航
                 var href = target.getAttribute('href');
                 if (href && href.indexOf('/zh/') !== -1) {
                     localStorage.setItem('yolong_lang', 'zh');
                 } else {
                     localStorage.setItem('yolong_lang', 'en');
                 }
+                // 保存完成后再手动导航
+                window.location.href = href;
             }
         });
     })();

@@ -136,6 +136,10 @@
      * 用户手动切换后记住选择，不再自动跳转
      */
     (function() {
+        // 当前页面的 base URL（适配 GitHub Pages 子路径和自定义域名）
+        var base = window.location.pathname.match(/^\/[^\/]+/);
+        var baseUrl = base ? base[0] : '';
+        var zhPath = baseUrl + '/zh/';
         // 是否在中文页面
         var isZh = window.location.pathname.indexOf('/zh/') !== -1;
         // 已保存的语言偏好
@@ -147,7 +151,7 @@
             var isZhUser = userLang && userLang.indexOf('zh') === 0;
             
             if (isZhUser) {
-                // 中国大陆 IP 检测（通过 Cloudflare 的 cf-ray/country 或免费 API）
+                // 中国大陆 IP 检测
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'https://ipapi.co/json/', true);
                 xhr.timeout = 3000;
@@ -157,7 +161,7 @@
                             var data = JSON.parse(xhr.responseText);
                             if (data.country === 'CN') {
                                 localStorage.setItem('yolong_lang', 'zh-auto');
-                                window.location.href = '/zh/';
+                                window.location.href = zhPath;
                             }
                         } catch(e) {}
                     }
@@ -166,7 +170,7 @@
                     // IP 检测失败时 fallback：根据浏览器语言
                     if (isZhUser) {
                         localStorage.setItem('yolong_lang', 'zh-auto');
-                        window.location.href = '/zh/';
+                        window.location.href = zhPath;
                     }
                 };
                 xhr.send();

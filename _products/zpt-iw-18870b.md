@@ -1,5 +1,5 @@
 ---
-model: ZPT-IW-18870B
+model: ZPT-IW-1870B
 name: 18V 700Nm Brushless Impact Wrench
 name_zh: 18V 700Nm 无刷冲击扳手
 category: fastening
@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 700 N·m
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-IW-18870B.jpg
+image: /images/products/fastening/temppics/ZPT-IW-1870B.jpg
 description: >-
   18V 700Nm brushless impact wrench with 4-mode drive control and aluminum gear
   box

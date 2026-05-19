@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 230 N·m
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-ID-1823B.jpg
+image: /images/products/fastening/ZPT-ID-1823B.jpg
 description: 18V 230N.m brushless impact driver with 3-speed control and compact design
 desc_zh: 18V 230N.m 无刷冲击起子，三速控制，紧凑设计
 features:

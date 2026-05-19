@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 350 N·m
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-IW-1835B.jpg
+image: /images/products/fastening/ZPT-IW-1835B.jpg
 description: 18V 350Nm brushless impact wrench with 3-speed control and compact design
 desc_zh: 18V 350Nm 无刷冲击扳手，三速控制，紧凑设计
 features:

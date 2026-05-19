@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 550 N·m (Max)
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-IW-1850B.jpg
+image: /images/products/fastening/ZPT-IW-1850B.jpg
 description: >-
   18V 500Nm brushless impact wrench with 4-mode drive control and aluminum gear
   box

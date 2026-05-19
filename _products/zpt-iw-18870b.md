@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 700 N·m
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-IW-1870B.jpg
+image: /images/products/fastening/ZPT-IW-1870B.jpg
 description: >-
   18V 700Nm brushless impact wrench with 4-mode drive control and aluminum gear
   box

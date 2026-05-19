@@ -7,7 +7,7 @@ status: true
 voltage: 18V
 torque: 850 N·m
 motorType: brushless
-image: /images/products/fastening/temppics/ZPT-IW-1885B.jpg
+image: /images/products/fastening/ZPT-IW-1885B.jpg
 description: >-
   18V 850Nm brushless impact wrench with 4-mode drive control — 700Nm fastening
   / 850Nm breakaway

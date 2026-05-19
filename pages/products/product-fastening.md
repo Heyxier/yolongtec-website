@@ -7,7 +7,7 @@ permalink: /products/fastening/
 
 <section class="section products-section" style="padding-top: 120px;">
     <div class="section-bg">
-        <img src="{{ "images/workshop-bg.jpg" | relative_url }}" alt="Workshop Background">
+        <img src="{{ "images/box.jpg" | relative_url }}" alt="Workshop Background">
         <div class="section-overlay"></div>
     </div>
     <div class="container">

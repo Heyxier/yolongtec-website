@@ -398,16 +398,19 @@ permalink: /zh/
             <div class="featured-scroll">
                 {% assign featured_products = site.data.zh_featured.featured | where: "type", "product" %}
                 {% for item in featured_products %}
-                    {% assign product = site.products | where: "model", item.model | first %}
-                    {% if product %}
+                    {% assign en_product = site.products | where: "model", item.model | first %}
+                    {% assign zh_product = site.zh_products | where: "model", item.model | first %}
+                    {% assign product = zh_product | default: en_product %}
+                    {% assign display = en_product | default: zh_product %}
+                    {% if product and display %}
                 <div class="featured-card">
                     <div class="featured-image">
-                        <img src="{{ product.image | relative_url }}" alt="{{ product.name }}">
+                        <img src="{{ display.image | relative_url }}" alt="{{ display.name }}">
                     </div>
                     <div class="featured-content">
                         {% if item.tag %}<span class="featured-tag">{{ item.tag }}</span>{% endif %}
-                        <h3>{{ product.name | upcase }}</h3>
-                        <p>{{ product.model }}{% if product.voltage %} | {{ product.voltage }}{% endif %}{% if product.torque %} | {{ product.torque }}{% endif %}</p>
+                        <h3>{{ display.name | upcase }}</h3>
+                        <p>{{ display.model }}{% if display.voltage %} | {{ display.voltage }}{% endif %}{% if display.torque %} | {{ display.torque }}{% endif %}</p>
                         <a href="{{ product.url | relative_url }}" class="featured-link">了解更多</a>
                     </div>
                 </div>

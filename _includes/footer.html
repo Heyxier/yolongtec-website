@@ -87,17 +87,13 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
+            <div class="footer-bottom">
             <p>&copy; 2026 Yolong Tech. {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}保留所有权利。{% else %}All rights reserved.{% endif %}</p>
             <div class="footer-legal">
                 {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}
-                <a href="{{ site.baseurl }}/zh/about/">隐私政策</a>
-                <a href="{{ site.baseurl }}/zh/about/">服务条款</a>
-                <a href="{{ site.baseurl }}/zh/contact/">Cookie政策</a>
+                <a href="{{ site.baseurl }}/zh/legal/">法律声明</a>
                 {% else %}
-                <a href="{{ site.baseurl }}/about/">Privacy Policy</a>
-                <a href="{{ site.baseurl }}/about/">Terms of Service</a>
-                <a href="{{ site.baseurl }}/contact/">Cookie Policy</a>
+                <a href="{{ site.baseurl }}/legal/">Legal Notice</a>
                 {% endif %}
             </div>
         </div>

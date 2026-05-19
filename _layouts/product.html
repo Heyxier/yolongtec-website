@@ -7,6 +7,8 @@ title: "{{ model }}"
 .product-detail {
     padding: 120px 0 80px;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 .product-container {
     max-width: 1200px;
@@ -119,6 +121,7 @@ title: "{{ model }}"
 </style>
 
 <section class="product-detail">
+    <div class="section-bg"><img src="{{ 'images/box.jpg' | relative_url }}" alt="Products"><div class="section-overlay"></div></div>
     <div class="product-container">
         <div class="product-grid">
             <div class="product-gallery">

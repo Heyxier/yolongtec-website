@@ -1,35 +1,37 @@
 ---
-model: "ZPT-IW-1885B"
-name: "18V 850Nm Brushless Impact Wrench"
-category: "fastening"
-voltage: "18V"
-torque: "850 N·m"
-motorType: "brushless"
-image: "/images/products/fastening/ZPT-IW-1885B.jpg"
-features:
-  - "Powerful brushless motor for higher efficiency"
-  - "4-mode drive control with auto shut-off and bolt removal mode"
-  - "Aluminum gear box for durability"
-  - "Tri-LED delivers high-definition lighting with less shadows"
-  - "Friction ring ensures quick and easy socket changes"
-  - "Rubber over-mould grip for comfortable handling"
-accessories:
-  - "1pc Belt Clip"
-  - "Color Box"
-description: "18V 850Nm brushless impact wrench with 4-mode drive control — 700Nm fastening / 850Nm breakaway"
-name_zh: "18V 850Nm 无刷冲击扳手"
-desc_zh: "18V 850Nm 无刷冲击扳手，4模式驱动控制——700Nm紧固 / 850Nm拆卸"
-features_zh:
-  - "高效无刷电机，性能强劲"
-  - "4模式驱动控制，带自动停机与断螺栓拆卸模式"
-  - "铝制变速箱，坚固耐用"
-  - "三LED高清照明，减少阴影"
-  - "摩擦环设计，快速更换套筒"
-  - "橡胶包胶手柄，握持舒适"
-accessories_zh:
-  - "1个腰夹"
-  - "彩盒包装"
+model: ZPT-IW-1885B
+name: 18V 850Nm Brushless Impact Wrench
+name_zh: 18V 850Nm 无刷冲击扳手
+category: fastening
 status: true
+voltage: 18V
+torque: 850 N·m
+motorType: brushless
+image: /images/products/fastening/temppics/ZPT-IW-1885B.jpg
+description: >-
+  18V 850Nm brushless impact wrench with 4-mode drive control — 700Nm fastening
+  / 850Nm breakaway
+desc_zh: 18V 850Nm 无刷冲击扳手，4模式驱动控制——700Nm紧固 / 850Nm拆卸
+features:
+  - Powerful brushless motor for higher efficiency
+  - 4-mode drive control with auto shut-off and bolt removal mode
+  - Aluminum gear box for durability
+  - Tri-LED delivers high-definition lighting with less shadows
+  - Friction ring ensures quick and easy socket changes
+  - Rubber over-mould grip for comfortable handling
+features_zh:
+  - 高效无刷电机，性能强劲
+  - 4模式驱动控制，带自动停机与断螺栓拆卸模式
+  - 铝制变速箱，坚固耐用
+  - 三LED高清照明，减少阴影
+  - 摩擦环设计，快速更换套筒
+  - 橡胶包胶手柄，握持舒适
+accessories:
+  - 1pc Belt Clip
+  - Color Box
+accessories_zh:
+  - 1个腰夹
+  - 彩盒包装
 ---
 
 # ZPT-IW-1885B 18V 850Nm Brushless Impact Wrench

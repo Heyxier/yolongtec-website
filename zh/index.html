@@ -409,7 +409,7 @@ permalink: /zh/
                     </div>
                     <div class="featured-content">
                         {% if item.tag %}<span class="featured-tag">{{ item.tag }}</span>{% endif %}
-                        <h3>{{ display.name | upcase }}</h3>
+                        <h3>{{ display.name_zh | default: display.name }}</h3>
                         <p>{{ display.model }}{% if display.voltage %} | {{ display.voltage }}{% endif %}{% if display.torque %} | {{ display.torque }}{% endif %}</p>
                         <a href="{{ product.url | relative_url }}" class="featured-link">了解更多</a>
                     </div>

@@ -26,9 +26,7 @@ status: true
 
 </div>
 
-<div>
-<h1>Award
-Reasons for Winning the Award:
+<h1><span style="color: var(--text-primary); font-size: 22px; font-weight: 700; font-family: var(--font);">Award Reasons for Winning the Award:</span>
 
 </h1>
 
@@ -40,9 +38,9 @@ Reasons for Winning the Award:
 
 </div>
 
-<div><span style="color: var(--text-primary); font-size: 22px; font-weight: 700; font-family: var(--font);">Looking Ahead:</span>
+<h1><span style="color: var(--text-primary); font-size: 22px; font-weight: 700; font-family: var(--font);">Looking Ahead:</span>
 
-</div>
+</h1>
 
 <div>Yolongtec will continue to deepen its expertise in the professional power tool sector, striving to provide higher quality products and services to users worldwide.
 

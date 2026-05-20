@@ -1,11 +1,10 @@
 drill:
   name: DRILL
-  name_zh: 电钻
+  name_zh: 无绳电钻
   slug: drill
   title: 无绳电钻
   desc: '12V & 18V cordless drills, impact drivers, and hammer drills'
-  desc_zh: '12V 和 18V 无绳电钻、冲击起子及冲击钻系列'
-  image: /images/cordless-drills.jpg
+  image: /images/drill-family.jpg
   order: 1
 fastening:
   name: FASTENING
@@ -13,7 +12,6 @@ fastening:
   slug: fastening
   title: 紧固工具
   desc: 'Impact wrenches, ratchets, and screwdrivers'
-  desc_zh: '冲击扳手、棘轮扳手及电动螺丝刀系列'
   image: /images/impact-drivers.jpg
   order: 2
 grinder-cutter:
@@ -22,7 +20,6 @@ grinder-cutter:
   slug: grinder-cutter
   title: 角磨机/切割机
   desc: 'Angle grinders, cut-off tools, and rotary tools'
-  desc_zh: '角磨机、切割工具及旋转工具系列'
   image: /images/angle-grinders.jpg
   order: 3
 hammer:
@@ -31,7 +28,6 @@ hammer:
   slug: hammer
   title: 电锤
   desc: 'Rotary hammers, demolition hammers, and chipping hammers'
-  desc_zh: '旋转锤、破碎锤及凿锤系列'
   image: /images/construction-worker.jpg
   order: 4
 saw:
@@ -40,16 +36,14 @@ saw:
   slug: saw
   title: 锯
   desc: 'Circular saws, reciprocating saws, and jigsaws'
-  desc_zh: '圆锯、往复锯及曲线锯系列'
   image: /images/circular-saws.jpg
   order: 5
 sander-polisher:
   name: SANDER & POLISHER
-  name_zh: 砂光机/抛光机
+  name_zh: 磨砂机/抛光机
   slug: sander-polisher
   title: 磨砂机/抛光机
   desc: 'Orbital sanders, polishers, and multi-tools'
-  desc_zh: '轨道砂光机、抛光机及多功能工具系列'
   image: /images/battery-tech.jpg
   order: 6
 cleanning:
@@ -58,7 +52,6 @@ cleanning:
   slug: cleanning
   title: 清洁设备
   desc: 'Blowers, vacuums, and pressure washers'
-  desc_zh: '吹风机、吸尘器及高压清洗机系列'
   image: /images/service-center.jpg
   order: 7
 lighting:
@@ -67,7 +60,6 @@ lighting:
   slug: lighting
   title: 照明设备
   desc: 'Work lights, flashlights, and site lights'
-  desc_zh: '工作灯、手电筒及场地照明系列'
   image: /images/smart-control.jpg
   order: 8
 scissors:
@@ -75,7 +67,6 @@ scissors:
   name_zh: 电动剪刀
   slug: scissors
   title: 电动剪刀
-  image: /images/dealer-network.jpg
   desc: 4V electric scissors
-  desc_zh: 4V 电动剪刀系列
+  image: /images/dealer-network.jpg
   order: 9

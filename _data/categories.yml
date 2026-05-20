@@ -2,8 +2,9 @@ drill:
   name: DRILL
   slug: drill
   title: 无绳电钻
+  name_zh: 无绳电钻
+  image: /images/drill-family.jpg
   desc: '12V & 18V cordless drills, impact drivers, and hammer drills'
-  image: /images/cordless-drills.jpg
   order: 1
 fastening:
   name: FASTENING

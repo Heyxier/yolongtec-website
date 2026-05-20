@@ -26,6 +26,7 @@ status: true
 
 </div>
 
+<div>
 <h1>Award
 Reasons for Winning the Award:
 
@@ -50,5 +51,7 @@ Reasons for Winning the Award:
 <div><p><img src="/images/impact-drivers.jpg" alt="" style="max-width:100%;border-radius:6px;">
 
 </p><br>
+
+</div>
 
 </div>

@@ -30,9 +30,7 @@ status: true
 
 </h1>
 
-<div><ol><li>Technological Innovation: The brushless motor series launched in 2025 has led the industry's technological upgrades.
-
-</li><li><span style="color: var(--text-primary); font-family: var(--font);">Product Quality: Adherence to German engineering standards.</span></li><li><span style="color: var(--text-primary); font-family: var(--font);">User Reputation: Over 90% user satisfaction rate.</span></li><li><span style="color: var(--text-primary); font-family: var(--font);">Service System: A global network of over 200 service locations.</span></li>
+<div><ol><li><span style="color: var(--text-primary); font-family: var(--font);">Technological Innovation: The brushless motor series launched in 2025 has led the industry's technological upgrades.</span></li><li><span style="color: var(--text-primary); font-family: var(--font);">Product Quality: Adherence to German engineering standards.</span></li><li><span style="color: var(--text-primary); font-family: var(--font);">User Reputation: Over 90% user satisfaction rate.</span></li><li><span style="color: var(--text-primary); font-family: var(--font);">Service System: A global network of over 200 service locations.</span></li>
 
 </ol>
 
@@ -52,4 +50,4 @@ status: true
 
 </div>
 
-</div>
+
